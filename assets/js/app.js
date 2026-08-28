@@ -1,6 +1,6 @@
 /**
  * AOSHA Platform - Interactive JavaScript
- * Modular Vanilla JS for Moodle Session Detection, Navigation, FAQ, and Modals
+ * Modular Vanilla JS for Moodle Session Detection, Light/Dark Theme Switcher, Navigation, FAQ, and Modals
  */
 
 (function () {
@@ -11,6 +11,7 @@
     moodleUrl: 'https://lms.aosha.sa',
     loginStatusFile: '/login_status.php',
     demoModalId: 'demo-modal',
+    themeStorageKey: 'aosha_theme_mode',
     toastTimeout: 4000
   };
 
@@ -18,7 +19,8 @@
   const state = {
     moodleUser: null,
     isMenuOpen: false,
-    isModalOpen: false
+    isModalOpen: false,
+    currentTheme: 'dark'
   };
 
   // DOM Elements
@@ -33,9 +35,53 @@
   const guestLoginBtn = document.getElementById('guest-login-btn');
   const modalOverlay = document.getElementById(CONFIG.demoModalId);
   const demoForm = document.getElementById('demo-request-form');
+  const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
 
   /**
-   * 1. Detect Moodle Session via login_status.php
+   * 1. Instant Light / Dark Mode Switcher (No Page Reload)
+   */
+  function initTheme() {
+    // Check saved preference or system preference
+    let savedTheme = 'dark';
+    try {
+      savedTheme = localStorage.getItem(CONFIG.themeStorageKey) || 'dark';
+    } catch (e) {
+      savedTheme = 'dark';
+    }
+
+    setTheme(savedTheme, false);
+
+    themeToggleBtns.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const newTheme = state.currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme, true);
+      });
+    });
+  }
+
+  function setTheme(theme, savePreference) {
+    state.currentTheme = theme;
+    document.documentElement.setAttribute('data-theme', theme);
+
+    // Update aria labels & titles on buttons
+    themeToggleBtns.forEach(function (btn) {
+      const label = theme === 'dark' ? 'التبديل إلى الوضع الفاتح' : 'التبديل إلى الوضع الداكن';
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', label);
+    });
+
+    if (savePreference) {
+      try {
+        localStorage.setItem(CONFIG.themeStorageKey, theme);
+      } catch (e) {
+        console.warn('LocalStorage not available');
+      }
+    }
+  }
+
+  /**
+   * 2. Detect Moodle Session via login_status.php
    */
   function detectMoodleSession() {
     if (!window.fetch) return;
@@ -70,7 +116,6 @@
         }
       })
       .catch(function (error) {
-        // Fallback gracefully on CORS/Network errors (e.g. during local offline dev)
         console.info('[AOSHA Moodle Bridge] Session check inactive or cross-origin pending:', error.message);
         renderGuestState();
       });
@@ -126,7 +171,7 @@
   }
 
   /**
-   * 2. Header Scroll Effect
+   * 3. Header Scroll Effect
    */
   function handleHeaderScroll() {
     if (!header) return;
@@ -138,7 +183,7 @@
   }
 
   /**
-   * 3. Mobile Menu Toggle
+   * 4. Mobile Menu Toggle
    */
   function setupMobileMenu() {
     if (!mobileMenuBtn || !navMenu) return;
@@ -169,7 +214,7 @@
   }
 
   /**
-   * 4. User Dropdown Toggle
+   * 5. User Dropdown Toggle
    */
   function setupUserDropdown() {
     if (!userBtn || !userDropdown) return;
@@ -187,7 +232,7 @@
   }
 
   /**
-   * 5. FAQ Accordion
+   * 6. FAQ Accordion
    */
   function setupFAQ() {
     const faqItems = document.querySelectorAll('.faq-item');
@@ -217,7 +262,7 @@
   }
 
   /**
-   * 6. Demo Request Modal
+   * 7. Demo Request Modal
    */
   function setupModal() {
     if (!modalOverlay) return;
@@ -285,7 +330,6 @@
       submitBtn.innerHTML = '<span>جاري الإرسال...</span>';
     }
 
-    // Simulate sending lead request
     setTimeout(function () {
       if (submitBtn) {
         submitBtn.disabled = false;
@@ -298,7 +342,7 @@
   }
 
   /**
-   * 7. Interactive Toast Notifications
+   * 8. Toast Notifications
    */
   function showToast(message) {
     let toast = document.getElementById('aosha-toast');
@@ -310,11 +354,11 @@
         bottom: 30px;
         left: 50%;
         transform: translateX(-50%) translateY(100px);
-        background: #0f2744;
-        color: #ffffff;
+        background: #112613;
+        color: #fffad1;
         padding: 16px 28px;
         border-radius: 12px;
-        border: 1px solid #10b981;
+        border: 1px solid #cba321;
         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         font-weight: 700;
         font-size: 0.95rem;
@@ -338,7 +382,7 @@
   }
 
   /**
-   * 8. Animated Counters on Scroll
+   * 9. Animated Counters on Scroll
    */
   function setupCounters() {
     const counterEls = document.querySelectorAll('.counter-val');
@@ -379,6 +423,7 @@
    * Initialize Everything on DOM Load
    */
   document.addEventListener('DOMContentLoaded', function () {
+    initTheme();
     detectMoodleSession();
     setupMobileMenu();
     setupUserDropdown();
