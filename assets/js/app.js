@@ -1,0 +1,393 @@
+/**
+ * AOSHA Platform - Interactive JavaScript
+ * Modular Vanilla JS for Moodle Session Detection, Navigation, FAQ, and Modals
+ */
+
+(function () {
+  'use strict';
+
+  // Configuration
+  const CONFIG = {
+    moodleUrl: 'https://lms.aosha.sa',
+    loginStatusFile: '/login_status.php',
+    demoModalId: 'demo-modal',
+    toastTimeout: 4000
+  };
+
+  // State
+  const state = {
+    moodleUser: null,
+    isMenuOpen: false,
+    isModalOpen: false
+  };
+
+  // DOM Elements
+  const header = document.getElementById('main-header');
+  const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  const userChip = document.getElementById('moodle-user-chip');
+  const userBtn = document.getElementById('user-badge-btn');
+  const userDropdown = document.getElementById('user-dropdown');
+  const userNameEl = document.getElementById('user-name-text');
+  const userAvatarEl = document.getElementById('user-avatar-placeholder');
+  const guestLoginBtn = document.getElementById('guest-login-btn');
+  const modalOverlay = document.getElementById(CONFIG.demoModalId);
+  const demoForm = document.getElementById('demo-request-form');
+
+  /**
+   * 1. Detect Moodle Session via login_status.php
+   */
+  function detectMoodleSession() {
+    if (!window.fetch) return;
+
+    const endpoint = CONFIG.moodleUrl + CONFIG.loginStatusFile;
+
+    fetch(endpoint, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        if (data && data.loggedin) {
+          state.moodleUser = {
+            id: data.id || null,
+            username: data.username || '',
+            fullname: data.fullname || data.username || 'المستخدم',
+            firstname: data.firstname || '',
+            avatar: data.avatar || ''
+          };
+          renderLoggedInState();
+        } else {
+          renderGuestState();
+        }
+      })
+      .catch(function (error) {
+        // Fallback gracefully on CORS/Network errors (e.g. during local offline dev)
+        console.info('[AOSHA Moodle Bridge] Session check inactive or cross-origin pending:', error.message);
+        renderGuestState();
+      });
+  }
+
+  /**
+   * Render User Logged In UI
+   */
+  function renderLoggedInState() {
+    if (!userChip) return;
+
+    const user = state.moodleUser;
+    const displayName = user.firstname || user.fullname.split(' ')[0] || user.fullname;
+
+    if (userNameEl) {
+      userNameEl.textContent = displayName;
+      userNameEl.setAttribute('title', user.fullname);
+    }
+
+    if (userAvatarEl) {
+      if (user.avatar && user.avatar.length > 5) {
+        userAvatarEl.innerHTML = '<img src="' + user.avatar + '" alt="' + user.fullname + '" />';
+      } else {
+        const initial = (user.fullname || 'U').charAt(0).toUpperCase();
+        userAvatarEl.textContent = initial;
+      }
+    }
+
+    // Toggle Visibility
+    userChip.classList.add('is-active');
+    if (guestLoginBtn) {
+      guestLoginBtn.style.display = 'none';
+    }
+
+    // Update Mobile Login Link if present
+    const mobileLoginLink = document.querySelector('.mobile-login-link');
+    if (mobileLoginLink) {
+      mobileLoginLink.textContent = 'لوحة التحكم LMS (' + displayName + ')';
+      mobileLoginLink.href = CONFIG.moodleUrl + '/my/';
+    }
+  }
+
+  /**
+   * Render Guest UI
+   */
+  function renderGuestState() {
+    if (userChip) {
+      userChip.classList.remove('is-active');
+    }
+    if (guestLoginBtn) {
+      guestLoginBtn.style.display = 'inline-flex';
+    }
+  }
+
+  /**
+   * 2. Header Scroll Effect
+   */
+  function handleHeaderScroll() {
+    if (!header) return;
+    if (window.scrollY > 40) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+
+  /**
+   * 3. Mobile Menu Toggle
+   */
+  function setupMobileMenu() {
+    if (!mobileMenuBtn || !navMenu) return;
+
+    mobileMenuBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      state.isMenuOpen = !state.isMenuOpen;
+      navMenu.classList.toggle('open', state.isMenuOpen);
+      mobileMenuBtn.setAttribute('aria-expanded', state.isMenuOpen);
+    });
+
+    // Close when clicking nav links
+    const links = navMenu.querySelectorAll('a');
+    links.forEach(function (link) {
+      link.addEventListener('click', function () {
+        state.isMenuOpen = false;
+        navMenu.classList.remove('open');
+      });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function (e) {
+      if (state.isMenuOpen && !navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        state.isMenuOpen = false;
+        navMenu.classList.remove('open');
+      }
+    });
+  }
+
+  /**
+   * 4. User Dropdown Toggle
+   */
+  function setupUserDropdown() {
+    if (!userBtn || !userDropdown) return;
+
+    userBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      userDropdown.classList.toggle('show');
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!userDropdown.contains(e.target) && !userBtn.contains(e.target)) {
+        userDropdown.classList.remove('show');
+      }
+    });
+  }
+
+  /**
+   * 5. FAQ Accordion
+   */
+  function setupFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    if (!faqItems.length) return;
+
+    faqItems.forEach(function (item) {
+      const questionBtn = item.querySelector('.faq-question');
+      if (!questionBtn) return;
+
+      questionBtn.addEventListener('click', function () {
+        const isActive = item.classList.contains('active');
+
+        // Close other items
+        faqItems.forEach(function (otherItem) {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+            const otherBtn = otherItem.querySelector('.faq-question');
+            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Toggle current item
+        item.classList.toggle('active', !isActive);
+        questionBtn.setAttribute('aria-expanded', !isActive ? 'true' : 'false');
+      });
+    });
+  }
+
+  /**
+   * 6. Demo Request Modal
+   */
+  function setupModal() {
+    if (!modalOverlay) return;
+
+    // Open triggers
+    const openBtns = document.querySelectorAll('[data-open-modal="demo"]');
+    openBtns.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    // Close triggers
+    const closeBtns = modalOverlay.querySelectorAll('[data-close-modal]');
+    closeBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        closeModal();
+      });
+    });
+
+    // Backdrop click
+    modalOverlay.addEventListener('click', function (e) {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    });
+
+    // Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && state.isModalOpen) {
+        closeModal();
+      }
+    });
+
+    // Form Submission
+    if (demoForm) {
+      demoForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        handleFormSubmit(this);
+      });
+    }
+  }
+
+  function openModal() {
+    if (!modalOverlay) return;
+    state.isModalOpen = true;
+    modalOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!modalOverlay) return;
+    state.isModalOpen = false;
+    modalOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function handleFormSubmit(form) {
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn ? submitBtn.innerHTML : '';
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>جاري الإرسال...</span>';
+    }
+
+    // Simulate sending lead request
+    setTimeout(function () {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+      form.reset();
+      closeModal();
+      showToast('شكراً لتواصلك مع أوشى! سيتواصل معك فريقنا لترتيب العرض التجريبي خلال 24 ساعة.');
+    }, 1200);
+  }
+
+  /**
+   * 7. Interactive Toast Notifications
+   */
+  function showToast(message) {
+    let toast = document.getElementById('aosha-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'aosha-toast';
+      toast.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        background: #0f2744;
+        color: #ffffff;
+        padding: 16px 28px;
+        border-radius: 12px;
+        border: 1px solid #10b981;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        font-weight: 700;
+        font-size: 0.95rem;
+        z-index: 9999;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        opacity: 0;
+        text-align: center;
+        max-width: 90%;
+      `;
+      document.body.appendChild(toast);
+    }
+
+    toast.textContent = message;
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateX(-50%) translateY(0)';
+
+    setTimeout(function () {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(-50%) translateY(100px)';
+    }, CONFIG.toastTimeout);
+  }
+
+  /**
+   * 8. Animated Counters on Scroll
+   */
+  function setupCounters() {
+    const counterEls = document.querySelectorAll('.counter-val');
+    if (!counterEls.length || !window.IntersectionObserver) return;
+
+    const observer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+          let current = 0;
+          const duration = 1500;
+          const stepTime = 30;
+          const totalSteps = duration / stepTime;
+          const increment = Math.ceil(target / totalSteps) || 1;
+
+          const timer = setInterval(function () {
+            current += increment;
+            if (current >= target) {
+              el.textContent = target;
+              clearInterval(timer);
+            } else {
+              el.textContent = current;
+            }
+          }, stepTime);
+
+          obs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counterEls.forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+
+  /**
+   * Initialize Everything on DOM Load
+   */
+  document.addEventListener('DOMContentLoaded', function () {
+    detectMoodleSession();
+    setupMobileMenu();
+    setupUserDropdown();
+    setupFAQ();
+    setupModal();
+    setupCounters();
+
+    window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+    handleHeaderScroll();
+  });
+
+})();

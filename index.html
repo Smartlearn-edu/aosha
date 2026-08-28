@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>منصة أوشى الشاملة | منظومة التدريب والأنظمة الإدارية والتفتيش وتصنيف المنشآت</title>
+  <meta name="description" content="منصة أوشى (AOSHA) الشاملة: أربع مسارات تشغيلية في منصة رقمية واحدة لإدارة التدريب LMS، أنظمة السلامة والأمن والبيئة HSSE، التفتيش والتدقيق، وتصنيف المنشآت." />
+  <meta name="keywords" content="منصة أوشى, أوشى, تدريب سلامة, سلامة وصحة مهنية, OSH, HSSE, Moodle LMS, تفتيش وتدقيق, تصنيف منشآت, Six Stars" />
+  <meta name="theme-color" content="#070e1c" />
+
+  <!-- OpenGraph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://aosha.sa" />
+  <meta property="og:title" content="منصة أوشى الشاملة | درّب كفاءاتك، أدر التزامك، وثّق رقابتك، وصنّف منشأتك" />
+  <meta property="og:description" content="أربع مسارات تشغيلية ومنصة رقمية واحدة لاتخاذ قرارات أفضل مبنية على البيانات والمؤشرات." />
+
+  <!-- Google Fonts: Tajawal & Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231e60db'><path d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 15.5l-4-4 1.41-1.41L11 13.67l6.59-6.59L19 8.5l-8 8z'/></svg>" />
+</head>
+<body>
+
+  <!-- ======================================================================
+       Header & Navigation Bar
+       ====================================================================== -->
+  <header class="header" id="main-header">
+    <div class="container header-container">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="brand-logo" aria-label="منصة أوشى الرئيسية">
+        <div class="brand-logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+        </div>
+        <div class="brand-logo-text">
+          <span class="brand-title">أوشى | AOSHA</span>
+          <span class="brand-tagline">منظومة الامتثال والتدريب</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-menu" id="nav-menu" aria-label="القائمة الرئيسية">
+        <a href="#hero" class="nav-link active">الرئيسية</a>
+        <a href="#why-aosha" class="nav-link">لماذا أوشى</a>
+        <a href="#tracks" class="nav-link">المسارات الأربعة</a>
+        <a href="#six-stars" class="nav-link">تصنيف المنشآت</a>
+        <a href="#data-insights" class="nav-link">قوة البيانات</a>
+        <a href="#faq" class="nav-link">الأسئلة الشائعة</a>
+        <a href="#contact" class="nav-link">تواصل معنا</a>
+      </nav>
+
+      <!-- Header Actions & Moodle Dynamic Auth State -->
+      <div class="header-actions">
+        
+        <!-- Moodle Logged-in User Chip (Controlled by JS) -->
+        <div class="moodle-user-chip" id="moodle-user-chip">
+          <button type="button" class="user-badge-btn" id="user-badge-btn" aria-haspopup="true" aria-expanded="false">
+            <div class="user-avatar-circle" id="user-avatar-placeholder">U</div>
+            <span class="user-name-text" id="user-name-text">المستخدم</span>
+            <span class="user-status-dot" title="متصل الآن بنظام التدريب"></span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div class="user-dropdown" id="user-dropdown">
+            <a href="https://lms.aosha.sa/my/" class="dropdown-item" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+              <span>لوحة التحكم LMS</span>
+            </a>
+            <a href="https://lms.aosha.sa/user/profile.php" class="dropdown-item" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>الملف الشخصي</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="https://lms.aosha.sa/login/logout.php" class="dropdown-item" style="color: #ef4444;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+              <span>تسجيل الخروج</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Guest Login Button (Links directly to Moodle) -->
+        <a href="https://lms.aosha.sa/login/index.php" class="btn btn-secondary" id="guest-login-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+            <polyline points="10 17 15 12 10 7"></polyline>
+            <line x1="15" y1="12" x2="3" y2="12"></line>
+          </svg>
+          <span>تسجيل الدخول</span>
+        </a>
+
+        <!-- Demo Booking CTA -->
+        <button type="button" class="btn btn-primary" data-open-modal="demo">
+          <span>طلب عرض تجريبي</span>
+        </button>
+
+        <!-- Mobile Toggle Button -->
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="فتح القائمة">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         Hero Section
+         ====================================================================== -->
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        
+        <!-- Hero Text Content -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="hero-badge-pulse"></span>
+            <span class="hero-badge-text">منصة رقمية موحدة للتدريب والسلامة والتصنيف</span>
+          </div>
+
+          <h1 class="hero-title">
+            منصة أوشى الشاملة
+            <br />
+            <span class="gradient-text">درّب كفاءاتك، أدر التزامك، وثّق رقابتك، وصنّف منشأتك بثقة</span>
+          </h1>
+
+          <p class="hero-description">
+            أربع مسارات تشغيلية ومنصة رقمية واحدة لاتخاذ قرارات أفضل مبنية على البيانات والمؤشرات. نساعد الشركات والمصانع والجهات على الانتقال من الإدارة التقليدية إلى منظومة إلكترونية متكاملة.
+          </p>
+
+          <div class="hero-actions">
+            <button type="button" class="btn btn-primary" data-open-modal="demo">
+              <span>احجز عرضاً توضيحياً</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+            </button>
+            
+            <a href="#tracks" class="btn btn-secondary">
+              <span>استكشف المسارات الأربعة</span>
+            </a>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="hero-stats">
+            <div class="hero-stat-item">
+              <div class="hero-stat-number">
+                <span class="counter-val" data-target="4">4</span>
+                <span class="plus">مسارات</span>
+              </div>
+              <span class="hero-stat-label">تشغيلية متكاملة ومترابطة</span>
+            </div>
+
+            <div class="hero-stat-item">
+              <div class="hero-stat-number">
+                <span class="counter-val" data-target="100">100</span>
+                <span class="plus">%</span>
+              </div>
+              <span class="hero-stat-label">جاهزية التفتيش والتدقيق</span>
+            </div>
+
+            <div class="hero-stat-item">
+              <div class="hero-stat-number">
+                <span class="counter-val" data-target="6">6</span>
+                <span class="plus">نجوم</span>
+              </div>
+              <span class="hero-stat-label">معيار تصنيف الأداء والامتثال</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Mockup -->
+        <div class="hero-visual">
+          <div class="dashboard-mockup">
+            <div class="dashboard-mockup-header">
+              <div class="mockup-controls">
+                <span class="mockup-dot red"></span>
+                <span class="mockup-dot yellow"></span>
+                <span class="mockup-dot green"></span>
+              </div>
+              <span class="mockup-title">لوحة مؤشرات أوشى الموحدة (AOSHA Command Center)</span>
+            </div>
+
+            <div class="mockup-body">
+              <div class="mockup-metrics-row">
+                <div class="mini-metric-card">
+                  <div class="mini-metric-header">
+                    <span>نسبة إتمام التدريب</span>
+                    <span class="mini-badge-pill pill-blue">LMS Track</span>
+                  </div>
+                  <div class="mini-metric-val">96.4%</div>
+                </div>
+
+                <div class="mini-metric-card">
+                  <div class="mini-metric-header">
+                    <span>مؤشر الامتثال والسلامة</span>
+                    <span class="mini-badge-pill pill-green">HSSE Audit</span>
+                  </div>
+                  <div class="mini-metric-val">98.2%</div>
+                </div>
+              </div>
+
+              <!-- Real-time Track Performance Bars -->
+              <div class="mockup-track-bars">
+                <div class="track-bar-item">
+                  <div class="track-bar-labels">
+                    <span>المسار 1: برامج التدريب والتأهيل</span>
+                    <span>94%</span>
+                  </div>
+                  <div class="track-progress-bg">
+                    <div class="track-progress-fill fill-1"></div>
+                  </div>
+                </div>
+
+                <div class="track-bar-item">
+                  <div class="track-bar-labels">
+                    <span>المسار 2: أنظمة السلامة والأمن والبيئة</span>
+                    <span>88%</span>
+                  </div>
+                  <div class="track-progress-bg">
+                    <div class="track-progress-fill fill-2"></div>
+                  </div>
+                </div>
+
+                <div class="track-bar-item">
+                  <div class="track-bar-labels">
+                    <span>المسار 3: إغلاق ملاحظات التفتيش الميداني</span>
+                    <span>96%</span>
+                  </div>
+                  <div class="track-progress-bg">
+                    <div class="track-progress-fill fill-3"></div>
+                  </div>
+                </div>
+
+                <div class="track-bar-item">
+                  <div class="track-bar-labels">
+                    <span>المسار 4: مؤشر تصنيف المنشأة (Six Stars)</span>
+                    <span>92%</span>
+                  </div>
+                  <div class="track-progress-bg">
+                    <div class="track-progress-fill fill-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Six Stars Badge -->
+          <div class="floating-badge">
+            <div class="floating-badge-icon">★</div>
+            <div>
+              <div class="floating-badge-title">معيار التقييم Six Stars</div>
+              <div class="floating-badge-sub">تصنيف معتمد ومدعوم بالأدلة الرقمية</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         Why AOSHA / Value Proposition Section
+         ====================================================================== -->
+    <section class="section section-alt" id="why-aosha">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-tag">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span>منظومة موحدة متكاملة</span>
+          </div>
+          <h2 class="section-title">
+            لماذا منصة أوشى؟
+            <br />
+            <span class="highlight">منصة واحدة... أربع منظومات متكاملة</span>
+          </h2>
+          <p class="section-subtitle">
+            كل مسار يعمل بشكل مستقل، ويمكن ربط المسارات معاً لتكوين منظومة متكاملة لإدارة الكفاءة والسلامة والامتثال والأداء المؤسسي.
+          </p>
+        </div>
+
+        <!-- 4 Ecosystem Connected Modules -->
+        <div class="ecosystem-grid">
+          
+          <div class="eco-card track-1">
+            <span class="eco-card-num">المسار 01</span>
+            <div class="eco-card-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </div>
+            <h3 class="eco-card-title">التدريب والتأهيل (LMS)</h3>
+            <p class="eco-card-desc">
+              إدارة شاملة للمدربين والمتدربين والدورات التفاعلية، وتتبع آلي للاختبارات مع إصدار شهادات إلكترونية موثقة.
+            </p>
+          </div>
+
+          <div class="eco-card track-2">
+            <span class="eco-card-num">المسار 02</span>
+            <div class="eco-card-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3 class="eco-card-title">الأنظمة الإدارية (HSSE)</h3>
+            <p class="eco-card-desc">
+              إدارة متكاملة للسلامة والصحة المهنية (OSH)، الأمن المدني، خطط الطوارئ، والامتثال البيئي وإدارة المخاطر.
+            </p>
+          </div>
+
+          <div class="eco-card track-3">
+            <span class="eco-card-num">المسار 03</span>
+            <div class="eco-card-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <h3 class="eco-card-title">التفتيش والتدقيق والتقارير</h3>
+            <p class="eco-card-desc">
+              قوائم فحص إلكترونية ميدانية، رصد الملاحظات وإرفاق الأدلة بالصور، ومسارات تصحيحية مؤتمتة وتقارير لحظية.
+            </p>
+          </div>
+
+          <div class="eco-card track-4">
+            <span class="eco-card-num">المسار 04</span>
+            <div class="eco-card-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="eco-card-title">تقييم وتصنيف المنشآت</h3>
+            <p class="eco-card-desc">
+              نظام تصنيف متقدم (Six Stars) يعتمد على مستوى المخاطر وحجم العمليات وتاريخ الأداء والامتثال الموثق.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Sectors Supported Banner -->
+        <div class="sectors-banner">
+          <div class="sectors-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2">
+              <path d="M3 21h18"></path>
+              <path d="M5 21V7l8-4v18"></path>
+              <path d="M19 21V11l-6-4"></path>
+            </svg>
+            <span>مصممة لتناسب مختلف الكيانات والقطاعات:</span>
+          </div>
+          <div class="sectors-pills">
+            <span class="sector-pill">الشركات الكبرى</span>
+            <span class="sector-pill">المصانع والمناطق الصناعية</span>
+            <span class="sector-pill">الجهات الحكومية</span>
+            <span class="sector-pill">مجموعات الشركات والفروع</span>
+            <span class="sector-pill">المقاولون المعتمدون</span>
+            <span class="sector-pill">مزودو الخدمات اللوجستية</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         The 4 Tracks Showcase Section
+         ====================================================================== -->
+    <section class="section" id="tracks">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-tag">
+            <span>تفاصيل المسارات التشغيلية</span>
+          </div>
+          <h2 class="section-title">
+            المسارات الأربعة
+            <span class="highlight">المتخصصة والشاملة</span>
+          </h2>
+          <p class="section-subtitle">
+            منصة متكاملة تنقل منشأتك من العمليات الورقية المشتتة إلى منظومة حية تعمل بتناغم تام
+          </p>
+        </div>
+
+        <!-- Track 1: LMS & Training -->
+        <div class="track-detail-section" id="track-1">
+          <div class="track-row">
+            <div class="track-content">
+              <div class="track-content-badge" style="background: var(--color-track-1-bg); color: var(--color-track-1);">
+                المسار الأول
+              </div>
+              <h3 class="track-content-title">التدريب والمدربين والدورات (LMS)</h3>
+              <div class="track-content-lead">اجعل التدريب أكثر تنظيماً وقياساً وفاعلية</div>
+              <p class="track-content-desc">
+                نظام LMS متقدم يتيح لك بناء مسارات تدريبية متكاملة في السلامة والصحة المهنية والأمن والبيئة، من تسجيل المتدرب وحتى تقييم الأداء وإصدار الشهادات المعتمدة.
+              </p>
+
+              <div class="track-features-list">
+                <div class="track-feature-item" style="border-right-color: var(--color-track-1);">
+                  <span class="track-feature-icon" style="color: var(--color-track-1);">✓</span>
+                  <span><strong>إدارة كاملة للمدربين:</strong> المؤهلات، الخبرات، الاعتمادات، تقييم الأداء، وسجل الإنجاز.</span>
+                </div>
+                <div class="track-feature-item" style="border-right-color: var(--color-track-1);">
+                  <span class="track-feature-icon" style="color: var(--color-track-1);">✓</span>
+                  <span><strong>دورات تفاعلية وبرامج مرنة:</strong> محتوى رقمي، فيديو، اختبارات، وحضور حضوري أو عن بُعد.</span>
+                </div>
+                <div class="track-feature-item" style="border-right-color: var(--color-track-1);">
+                  <span class="track-feature-icon" style="color: var(--color-track-1);">✓</span>
+                  <span><strong>تتبع آلي وإصدار شهادات:</strong> إصدار شهادات إلكترونية برمز تحقق QR موثوق.</span>
+                </div>
+                <div class="track-feature-item" style="border-right-color: var(--color-track-1);">
+                  <span class="track-feature-icon" style="color: var(--color-track-1);">✓</span>
+                  <span><strong>جدولة ذكية حسب المخاطر:</strong> ربط خطط التدريب مباشرة بنوع الوظيفة ومستوى خطورة العمل.</span>
+                </div>
+              </div>
+
+              <div class="track-cta">
+                <a href="https://lms.aosha.sa" class="btn btn-secondary" target="_blank" rel="noopener">
+                  <span>الدخول لمنصة التدريب LMS</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Track 1 Visual Showcase -->
+            <div class="track-showcase-box" style="border-color: rgba(14, 165, 233, 0.3);">
+              <div class="track-box-header">
+                <div class="track-box-icon" style="background: var(--color-track-1-bg); color: var(--color-track-1);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                </div>
+                <span class="track-box-status" style="background: var(--color-track-1-bg); color: var(--color-track-1);">
+                  LMS Ecosystem
+                </span>
+              </div>
+              <div class="track-card-grid">
+                <div class="track-subcard">
+                  <h4 class="track-subcard-title">إدارة المدربين</h4>
+                  <p class="track-subcard-desc">سجلات ومؤهلات المدربين والتقييم الدوري للأداء.</p>
+                </div>
+                <div class="track-subcard">
+                  <h4 class="track-subcard-title">إدارة الدورات</h4>
+                  <p class="track-subcard-desc">بناء البرامج التدريبية والاختبارات وبنوك الأسئلة.</p>
+                </div>
+                <div class="track-subcard">
+                  <h4 class="track-subcard-title">إدارة المتدربين</h4>
+                  <p class="track-subcard-desc">متابعة نسب الحضور والتقدم والنتائج الفورية.</p>
+                </div>
+                <div class="track-subcard">
+                  <h4 class="track-subcard-title">الشهادات الرقمية</h4>
+                  <p class="track-subcard-desc">توليد الشهادات المعتمدة مع إمكانية التحقق الفوري.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Track 2: HSSE Management -->
+        <div class="track-detail-section" id="track-2">
+          <div class="track-row reverse">
+            <div class="track-content">
+              <div class="track-content-badge" style="background: var(--color-track-2-bg); color: var(--color-track-2);">
+                المسار الثاني
+              </div>
+              <h3 class="track-content-title">الأنظمة الإدارية (HSSE Management)</h3>
+              <div class="track-content-lead">أدر السلامة والأمن والبيئة من منصة واحدة مترابطة</div>
+              <p class="track-content-desc">
+                بدلاً من المتابعات اليدوية المتناثرة، توثّق منصة أوشى المتطلبات والسجلات والوثائق والمهام ضمن مسارات عمل قابلة للتهيئة والمتابعة وفق أفضل المعايير.
+              </p>
+
+              <div class="track-features-list">
+                <div class="track-feature-item" style="border-right-color: var(--color-track-2);">
+                  <span class="track-feature-icon" style="color: var(--color-track-2);">✓</span>
+                  <span><strong>إدارة السلامة والصحة المهنية (OSH):</strong> السياسات، الإجراءات، تقييم المخاطر، والتحقيق في الحوادث.</span>
+                </div>
+                <div class="track-feature-item" style="border-right-color: var(--color-track-2);">
+                  <span class="track-feature-icon" style="color: var(--color-track-2);">✓</span>
+                  <span><strong>إدارة الأمن المدني:</strong> خطط الطوارئ، برامج الإخلاء، فرق الاستجابة، والتدريبات الدورية.</span>
+                </div>
+                <div class="track-feature-item" style="border-right-color: var(--color-track-2);">
+                  <span class="track-feature-icon" style="color: var(--color-track-2);">✓</span>
+                  <span><strong>إدارة البيئة والاستدامة:</strong> مراقبة الانبعاثات والنفايات، الامتثال البيئي، وتقارير الاستدامة.</span>
+                </div>
+                <div class="track-feature-item" style="border-right-color: var(--color-track-2);">
+                  <span class="track-feature-icon" style="color: var(--color-track-2);">✓</span>
+                  <span><strong>إدارة الوثائق والمخاطر:</strong> مصفوفات المخاطر الرقمية وحفظ السجلات بما يضمن الامتثال التنظيمي.</span>
+                </div>
+              </div>
+
+              <div class="track-cta">
+                <button type="button" class="btn btn-secondary" data-open-modal="demo">
+                  <span>طلب تهيئة الأنظمة الإدارية</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Track 2 Visual Showcase -->
+            <div class="track-showcase-box" style="border-color: rgba(16, 185, 129, 0.3);">
+              <div class="track-box-header">
+                <div class="track-box-icon" style="background: var(--color-track-2-bg); color: var(--color-track-2);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                </div>
+                <span class="track-box-status" style="background: var(--color-track-2-bg); color: var(--color-track-2);">
+                  HSSE Integrated
+                </span>
+              </div>
+              <div class="track-card-grid">
+                <div class="track-subcard">
+                  <h4 class="track-subcard-title">السلامة والصحة (OSH)</h4>
+                  <p class="track-subcard-desc">تحقيقات الحوادث، الإجراءات التصحيحية ومؤشرات الأداء.</p>
+                </div>
+                <div class="track-subcard">
+                  <h4 class="track-subcard-title">الأمن المدني</h4>
+                  <p class="track-subcard-desc">خطط الطوارئ وفرق الاستجابة والجاهزية للحالات الطارئة.</p>
+                </div>
+                <div class="track-subcard">
+                  <h4 class="track-subcard-title">إدارة البيئة</h4>
+                  <p class="track-subcard-desc">سجلات النفايات الخطرة، الانبعاثات ومؤشرات الاستدامة.</p>
+                </div>
+                <div class="track-subcard">
+                  <h4 class="track-subcard-title">مصفوفة المخاطر</h4>
+                  <p class="track-subcard-desc">تحديد مستويات الخطورة وخطط التحكم الوقائي المباشر.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Track 3: Inspection & Auditing -->
+        <div class="track-detail-section" id="track-3">
+          <div class="track-row">
+            <div class="track-content">
+              <div class="track-content-badge" style="background: var(--color-track-3-bg); color: var(--color-track-3);">
+                المسار الثالث
+              </div>
+              <h3 class="track-content-title">التفتيش والتدقيق والتقارير</h3>
+              <div class="track-content-lead">تفتيش ذكي… تدقيق منهجي… تقارير جاهزة في ثوانٍ</div>
+              <p class="track-content-desc">
+                أدوات تفتيش وتدقيق رقمية تُمكّن الفرق من إجراء الجولات الميدانية، وتسجيل الملاحظات، ورفع الأدلة والصور من الموقع، مع تحويل النتائج تلقائياً إلى تقارير احترافية.
+              </p>
+
+              <div class="track-features-list">
+                <div class="track-feature-item" style="border-right-color: var(--color-track-3);">
+                  <span class="track-feature-icon" style="color: var(--color-track-3);">✓</span>
+                  <span><strong>التفتيش الإلكتروني الميداني:</strong> قوائم فحص قابلة للتخصيص حسب طبيعة المنشأة والمخاطر.</span>
+                </div>
+                <div class="track-feature-item" style="border-right-color: var(--color-track-3);">
+                  <span class="track-feature-icon" style="color: var(--color-track-3);">✓</span>
+                  <span><strong>التدقيق الداخلي والخارجي:</strong> إدارة نتائج التدقيق، تسجيل حالات عدم المطابقة وتتبعها.</span>
+                </div>
+                <div class="track-feature-item" style="border-right-color: var(--color-track-3);">
+                  <span class="track-feature-icon" style="color: var(--color-track-3);">✓</span>
+                  <span><strong>مسار تصحيحي مؤتمت (CAPA):</strong> إسناد الملاحظات لأصحابها مع تحديد المدة ومتابعة الإغلاق.</span>
+                </div>
+                <div class="track-feature-item" style="border-right-color: var(--color-track-3);">
+                  <span class="track-feature-icon" style="color: var(--color-track-3);">✓</span>
+                  <span><strong>الأدلة والمرفقات بالصور:</strong> توثيق الملاحظة بالصورة والبيانات الجغرافية لرفع الشفافية.</span>
+                </div>
+              </div>
+
+              <div class="track-cta">
+                <button type="button" class="btn btn-secondary" data-open-modal="demo">
+                  <span>طلب تجربة تطبيق التفتيش</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Track 3 Visual Showcase -->
+            <div class="track-showcase-box" style="border-color: rgba(139, 92, 246, 0.3);">
+              <div class="track-box-header">
+                <div class="track-box-icon" style="background: var(--color-track-3-bg); color: var(--color-track-3);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 11 12 14 22 4"></polyline>
+                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                  </svg>
+                </div>
+                <span class="track-box-status" style="background: var(--color-track-3-bg); color: var(--color-track-3);">
+                  Smart Inspection
+                </span>
+              </div>
+              <div class="track-card-grid">
+                <div class="track-subcard">
+                  <h4 class="track-subcard-title">قوائم الفحص الرقمية</h4>
+                  <p class="track-subcard-desc">نماذج ذكية مخصصة للسلامة والمعدات والمواقع.</p>
+                </div>
+                <div class="track-subcard">
+                  <h4 class="track-subcard-title">الإجراءات التصحيحية</h4>
+                  <p class="track-subcard-desc">أتمتة إغلاق المخالفات والملاحظات الرقابية.</p>
+                </div>
+                <div class="track-subcard">
+                  <h4 class="track-subcard-title">الأدلة والمرفقات</h4>
+                  <p class="track-subcard-desc">رفع الصور والوثائق الثبوتية مع كل تقرير.</p>
+                </div>
+                <div class="track-subcard">
+                  <h4 class="track-subcard-title">تقارير فورية جاهزة</h4>
+                  <p class="track-subcard-desc">تصدير تقارير PDF وإحصائيات للإدارة في ثوانٍ.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Track 4: Evaluation & Classification (Six Stars) -->
+        <div class="track-detail-section" id="track-4">
+          <div class="track-row reverse">
+            <div class="track-content">
+              <div class="track-content-badge" style="background: var(--color-track-4-bg); color: var(--color-track-4);">
+                المسار الرابع
+              </div>
+              <h3 class="track-content-title">تصنيف الشركات والمنشآت والمصانع</h3>
+              <div class="track-content-lead">اعرف مستوى منشأتك... واتخذ القرار بناءً على البيانات</div>
+              <p class="track-content-desc">
+                بيانات موثّقة تدعم ملف تصنيف منشأتك، بدلًا من تجميعها في اللحظة الأخيرة. نظام تصنيف متقدم يعتمد على مستوى المخاطر وحجم العمليات وتاريخ الأداء في السلامة والبيئة والأمن.
+              </p>
+
+              <div class="track-features-list">
+                <div class="track-feature-item" style="border-right-color: var(--color-track-4);">
+                  <span class="track-feature-icon" style="color: var(--color-track-4);">✓</span>
+                  <span><strong>ملف امتثال جاهز بالكامل:</strong> تجميع تلقائي لسجلات التدريب، السلامة، والتفتيش في ملف واحد منظم.</span>
+                </div>
+                <div class="track-feature-item" style="border-right-color: var(--color-track-4);">
+                  <span class="track-feature-icon" style="color: var(--color-track-4);">✓</span>
+                  <span><strong>تصنيف حسب نوع الكيان:</strong> دعم مسارات مختلفة للمصانع، المنشآت التجارية، والكيانات الخدمية.</span>
+                </div>
+                <div class="track-feature-item" style="border-right-color: var(--color-track-4);">
+                  <span class="track-feature-icon" style="color: var(--color-track-4);">✓</span>
+                  <span><strong>مؤشرات جاهزية التصنيف:</strong> لوحة توضح مدى اكتمال بنود التصنيف قبل التقديم الرسمي للجهات.</span>
+                </div>
+                <div class="track-feature-item" style="border-right-color: var(--color-track-4);">
+                  <span class="track-feature-icon" style="color: var(--color-track-4);">✓</span>
+                  <span><strong>دعم متعدد المواقع والفروع:</strong> إدارة وتصنيف عدة فروع ومصانع تحت كيان واحد بشفافية كاملة.</span>
+                </div>
+              </div>
+
+              <div class="track-cta">
+                <button type="button" class="btn btn-outline-gold" data-open-modal="demo">
+                  <span>طلب تقييم جاهزية التصنيف</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Track 4 Visual Showcase -->
+            <div class="track-showcase-box" style="border-color: rgba(245, 158, 11, 0.4);">
+              <div class="track-box-header">
+                <div class="track-box-icon" style="background: var(--color-track-4-bg); color: var(--color-track-4);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                </div>
+                <span class="track-box-status" style="background: var(--color-track-4-bg); color: var(--color-track-4);">
+                  Six Stars Ready
+                </span>
+              </div>
+              <div class="track-card-grid">
+                <div class="track-subcard">
+                  <h4 class="track-subcard-title">التقييم الإلكتروني</h4>
+                  <p class="track-subcard-desc">تقييم المنشآت وفق معايير واضحة وقابلة للقياس.</p>
+                </div>
+                <div class="track-subcard">
+                  <h4 class="track-subcard-title">ملف رقمي موحد</h4>
+                  <p class="track-subcard-desc">ملف رقمي يشمل الشهادات والتقارير ومستوى الأداء.</p>
+                </div>
+                <div class="track-subcard">
+                  <h4 class="track-subcard-title">المقارنة والتحليل</h4>
+                  <p class="track-subcard-desc">مقارنة أداء الفروع والمواقع واكتشاف نقاط التحسين.</p>
+                </div>
+                <div class="track-subcard">
+                  <h4 class="track-subcard-title">قرار مبني على بيانات</h4>
+                  <p class="track-subcard-desc">تحويل التصنيف من تقدير تقليدي إلى أدلة رقمية.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         Six Stars Award & Evaluation Framework Section
+         ====================================================================== -->
+    <section class="section six-stars-section" id="six-stars">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="six-stars-badge-row">
+            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          
+          <h2 class="section-title">
+            إطار تقييم وتصنيف النجوم الستة
+            <br />
+            <span class="highlight" style="color: #fbbf24; -webkit-text-fill-color: #fbbf24;">AOSHA HSSE Six Stars Performance Evaluation</span>
+          </h2>
+          <p class="section-subtitle">
+            منظومة معتمدة لتقييم الأداء الشهري للشركات والمصانع والكيانات التابعة والمقاولين استناداً إلى أدلة تفتيش وتدقيق حقيقية.
+          </p>
+        </div>
+
+        <div class="criteria-table-card">
+          <div class="criteria-grid">
+            
+            <div class="criteria-item gold">
+              <div class="criteria-level">مستوى ممتاز (Excellent)</div>
+              <div class="criteria-points">10 نقاط</div>
+              <p class="criteria-desc">صفر ملاحظات رقابية (Zero Observation)، التزام كامل بإجراءات السلامة والتدريب الموثق.</p>
+            </div>
+
+            <div class="criteria-item">
+              <div class="criteria-level">مستوى جيد (Good)</div>
+              <div class="criteria-points">7 نقاط</div>
+              <p class="criteria-desc">ملاحظة واحدة فقط (One Observation) مع سرعة تفعيل الإجراء التصحيحي وإغلاقه.</p>
+            </div>
+
+            <div class="criteria-item">
+              <div class="criteria-level">يحتاج تحسين (Needs Improvement)</div>
+              <div class="criteria-points">5 نقاط</div>
+              <p class="criteria-desc">ملاحظتان (Two Observations) وتحديد خطة عمل وقائية عاجلة لرفع مستوى الامتثال.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         Data-Driven Insights Section (قوة المنصة في البيانات)
+         ====================================================================== -->
+    <section class="section section-alt" id="data-insights">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-tag">
+            <span>التحول الرقمي الذكي</span>
+          </div>
+          <h2 class="section-title">
+            قوة المنصة في البيانات
+            <br />
+            <span class="highlight">من الأرقام إلى التحسين المستمر</span>
+          </h2>
+          <p class="section-subtitle">
+            لا تكتفِ بجمع البيانات.. حوّل البيانات إلى مؤشرات، والمؤشرات إلى قرارات، والقرارات إلى تحسين مستمر.
+          </p>
+        </div>
+
+        <div class="data-flow-container">
+          
+          <div class="data-step-card">
+            <div class="data-step-number">1</div>
+            <h3 class="data-step-title">جمع البيانات</h3>
+            <p class="data-step-desc">تسجيل نشاط التدريب والتفتيش وإجراءات السلامة لحظة بلحظة وبلا انقطاع.</p>
+          </div>
+
+          <div class="data-step-card">
+            <div class="data-step-number">2</div>
+            <h3 class="data-step-title">تحويل لمؤشرات</h3>
+            <p class="data-step-desc">تحليل الأداء وإظهار نسب الالتزام، مواطن الخطر، ومعدلات الإغلاق في لوحات حية.</p>
+          </div>
+
+          <div class="data-step-card">
+            <div class="data-step-number">3</div>
+            <h3 class="data-step-title">صناعة القرار</h3>
+            <p class="data-step-desc">تزويد الإدارة العليا برؤية فورية للإجابة على: أين تكمن المخاطر؟ ومن المسؤول ومتى يُغلق الإجراء؟</p>
+          </div>
+
+          <div class="data-step-card">
+            <div class="data-step-number">4</div>
+            <h3 class="data-step-title">تحسين مستمر</h3>
+            <p class="data-step-desc">منع تكرار الملاحظات ورفع الجاهزية الدائمة لأي زيارة تدقيق أو متطلبات تصنيف.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         FAQ Section (الأسئلة الشائعة)
+         ====================================================================== -->
+    <section class="section" id="faq">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-tag">
+            <span>إجابات واضحة</span>
+          </div>
+          <h2 class="section-title">الأسئلة الشائعة</h2>
+          <p class="section-subtitle">إليك أبرز الاستفسارات حول طريقة عمل منصة أوشى وكيفية مواءمتها مع منشأتك</p>
+        </div>
+
+        <div class="faq-container">
+          
+          <!-- FAQ Item 1 -->
+          <div class="faq-item active">
+            <button type="button" class="faq-question" aria-expanded="true">
+              <span>هل منصة أوشى مخصصة لإدارة الدورات فقط؟</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                لا. تجمع منصة أوشى بين إدارة التدريب والمدربين والدورات، ومسارات للأنظمة الإدارية بما فيها السلامة والصحة المهنية والأمن المدني والبيئة، وأعمال التفتيش والتدقيق والتقارير، والتصنيف المؤسسي. ويمكن تفعيل الوحدات وتحديد نطاقها بحسب احتياج الجهة.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>هل يمكن مواءمة منصة أوشى مع نموذج التشغيل لدينا؟</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                يمكن تهيئة الهيكل التنظيمي، والأدوار، والنماذج، وسير العمل، ومسارات المراجعة، ومعايير التقييم بما يتوافق مع السياسات والإجراءات المعتمدة لدى الجهة، وفق نطاق التنفيذ المتفق عليه.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>هل تدعم منصة أوشى الشركات أو الفروع أو المواقع المتعددة؟</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                يمكن إعداد بنية العمل بما يدعم الشركات والكيانات والفروع والمصانع والمواقع والإدارات، مع تنظيم الصلاحيات والوصول بحسب الدور والمسؤولية.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>كيف تدعم منصة أوشى أعمال التفتيش والتدقيق؟</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                تساعد منصة أوشى في إعداد قوائم الفحص، وتسجيل الملاحظات والأدلة، وإدارة نتائج التدقيق، وإسناد الإجراءات التصحيحية، ومتابعة حالة الإغلاق، وإصدار التقارير ولوحات المتابعة وفق الإعدادات المفعلة.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 5 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>هل يمكن استخدام منصة أوشى لتصنيف الشركات والمنشآت؟</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                نعم. تتيح منصة أوشى بناء إطار تصنيف خاص بالجهة، يشمل المعايير والأوزان والأسئلة والأدلة ومسارات المراجعة والاعتماد. وتحتفظ الجهة المالكة بمنهجية التصنيف والقرارات التنظيمية ذات الصلة.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 6 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>لماذا المنصة الواحدة أفضل من أربعة أنظمة منفصلة؟</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                • <strong>بيانات موحّدة:</strong> نتيجة اختبار تدريبي، ملاحظة تفتيش، وإجراء سلامة — كلها مترابطة في سجل واحد لكل موظف وموقع.<br />
+                • <strong>جاهزية دائمة للمراجعة:</strong> لا حاجة لتجهيز خاص قبل أي زيارة تدقيق أو تفتيش، فالسجلات مُحدَّثة لحظيًا.<br />
+                • <strong>تقليل الأخطاء البشرية:</strong> تنبيهات آلية تحل محل المتابعة اليدوية عبر جداول متفرقة.<br />
+                • <strong>رؤية واحدة للإدارة العليا:</strong> لوحة تنفيذية تُظهر حالة الامتثال في كل المسارات الأربعة بنظرة واحدة.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 7 -->
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span>كيف نبدأ تفعيل المنصة لمنشأتنا؟</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                ابدأ بطلب عرض توضيحي. سنناقش العمليات ذات الأولوية، والوحدات المناسبة، وطريقة إعداد منصة أوشى بما يتلاءم مع أهداف منشأتك وتفعيل المسار المناسب خلال أيام معدودة.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         Trust & Security Banner
+         ====================================================================== -->
+    <section class="section section-alt" style="padding: 60px 0;">
+      <div class="container">
+        <div class="trust-banner">
+          <div>
+            <h2 class="trust-title">الثقة، الأمان، وحماية البيانات</h2>
+            <p class="trust-desc">
+              نُدرك أن بيانات السلامة والامتثال حسّاسة. لذلك تُدار المنصة وفق ضوابط صارمة لحماية البيانات، وصلاحيات وصول دقيقة حسب الدور الوظيفي، وسجل تدقيق كامل لكل تعديل، بما يضمن سلامة البيانات ومصداقيتها أمام أي جهة رقابية.
+            </p>
+          </div>
+
+          <div class="trust-badges-grid">
+            <div class="trust-badge-card">
+              <span class="trust-badge-icon">🔒</span>
+              <span class="trust-badge-text">تشفير متقدم للبيانات</span>
+            </div>
+            <div class="trust-badge-card">
+              <span class="trust-badge-icon">🛡️</span>
+              <span class="trust-badge-text">صلاحيات دقيقة (RBAC)</span>
+            </div>
+            <div class="trust-badge-card">
+              <span class="trust-badge-icon">📋</span>
+              <span class="trust-badge-text">سجل تدقيق كامل للأدلة</span>
+            </div>
+            <div class="trust-badge-card">
+              <span class="trust-badge-icon">☁️</span>
+              <span class="trust-badge-text">استضافة آمنة وموثوقة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CTA Section
+         ====================================================================== -->
+    <section class="cta-section" id="contact">
+      <div class="container">
+        <div class="cta-box">
+          <h2 class="cta-title">هل أنت مستعد لتوحيد التدريب والامتثال والتفتيش والتصنيف؟</h2>
+          <p class="cta-desc">
+            اكتشف كيف تساعد منصة أوشى فريقك على تنظيم العمليات، وتحديد المسؤوليات، وتوثيق الأدلة، وتحويل البيانات إلى رؤية عملية تدعم القرار.
+          </p>
+
+          <div class="cta-actions">
+            <button type="button" class="btn btn-primary" data-open-modal="demo">
+              <span>احجز عرضاً توضيحياً الآن</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+            </button>
+
+            <a href="https://lms.aosha.sa" class="btn btn-secondary" target="_blank" rel="noopener">
+              <span>الدخول لمنصة التدريب (LMS)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       Demo Request Modal
+       ====================================================================== -->
+  <div class="modal-overlay" id="demo-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn" data-close-modal aria-label="إغلاق النافذة">×</button>
+      
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">احجز عرضاً توضيحياً لمنصتك</h3>
+        <p class="modal-subtitle">أدخل بيانات التواصل وسيقوم مستشار أوشى بالتواصل معكم لتحديد موعد العرض الحي</p>
+      </div>
+
+      <form id="demo-request-form">
+        <div class="form-group">
+          <label class="form-label" for="client-name">الاسم الكريم *</label>
+          <input type="text" id="client-name" class="form-input" placeholder="أدخل اسمك الكامل" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="client-company">اسم المنشأة / الشركة *</label>
+          <input type="text" id="client-company" class="form-input" placeholder="اسم الشركة أو المصنع أو الجهة" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="client-email">البريد الإلكتروني المهني *</label>
+          <input type="email" id="client-email" class="form-input" placeholder="name@company.sa" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="client-phone">رقم الجوال *</label>
+          <input type="tel" id="client-phone" class="form-input" placeholder="05xxxxxxxx" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="interested-track">المسار الأساسي المستهدف</label>
+          <select id="interested-track" class="form-select">
+            <option value="all">كافة المسارات الأربعة (المنظومة الشاملة)</option>
+            <option value="lms">المسار 1: التدريب والتأهيل (LMS)</option>
+            <option value="hsse">المسار 2: الأنظمة الإدارية (HSSE)</option>
+            <option value="audit">المسار 3: التفتيش والتدقيق والتقارير</option>
+            <option value="classification">المسار 4: تقييم وتصنيف المنشآت (Six Stars)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+          <span>إرسال طلب العرض التجريبي</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       Footer
+       ====================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      
+      <div class="footer-grid">
+        
+        <!-- Brand Column -->
+        <div>
+          <a href="#hero" class="brand-logo">
+            <div class="brand-logo-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+            </div>
+            <div class="brand-logo-text">
+              <span class="brand-title">أوشى | AOSHA</span>
+              <span class="brand-tagline">منظومة الامتثال والتدريب</span>
+            </div>
+          </a>
+          <p class="footer-brand-desc">
+            المنصة الرقمية المتكاملة لإدارة التدريب، السلامة والصحة المهنية والأمن والبيئة، التفتيش الميداني، وتصنيف المنشآت.
+          </p>
+        </div>
+
+        <!-- Navigation Links -->
+        <div>
+          <h4 class="footer-col-title">روابط المنصة</h4>
+          <ul class="footer-links">
+            <li><a href="#hero" class="footer-link">الرئيسية</a></li>
+            <li><a href="#why-aosha" class="footer-link">لماذا منصة أوشى</a></li>
+            <li><a href="#tracks" class="footer-link">المسارات الأربعة</a></li>
+            <li><a href="#six-stars" class="footer-link">تصنيف النجوم الستة</a></li>
+            <li><a href="#data-insights" class="footer-link">قوة البيانات</a></li>
+            <li><a href="#faq" class="footer-link">الأسئلة الشائعة</a></li>
+          </ul>
+        </div>
+
+        <!-- Modules Links -->
+        <div>
+          <h4 class="footer-col-title">المسارات التشغيلية</h4>
+          <ul class="footer-links">
+            <li><a href="#track-1" class="footer-link">التدريب والتأهيل LMS</a></li>
+            <li><a href="#track-2" class="footer-link">الأنظمة الإدارية HSSE</a></li>
+            <li><a href="#track-3" class="footer-link">التفتيش والتدقيق</a></li>
+            <li><a href="#track-4" class="footer-link">تصنيف الكيانات التجارية</a></li>
+            <li><a href="https://lms.aosha.sa" class="footer-link" target="_blank" rel="noopener">بوابة Moodle التعليمية</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Column -->
+        <div>
+          <h4 class="footer-col-title">التواصل والدعم</h4>
+          <ul class="footer-links">
+            <li><a href="https://aosha.sa" class="footer-link">الموقع الرسمي: aosha.sa</a></li>
+            <li><a href="https://lms.aosha.sa" class="footer-link">بوابة التدريب: lms.aosha.sa</a></li>
+            <li>
+              <a href="#" class="footer-link" data-open-modal="demo">طلب موعد عرض تجريبي</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div>
+          جميع الحقوق محفوظة © <span id="current-year">2026</span> منصة أوشى (AOSHA).
+        </div>
+        <div>
+          المملكة العربية السعودية | النطاق الرسمي: <a href="https://aosha.sa" style="color: var(--color-track-1);">aosha.sa</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
