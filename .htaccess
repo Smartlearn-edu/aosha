@@ -4,7 +4,10 @@
 # ==============================================================================
 
 <IfModule mod_headers.c>
-  # 1. RFC 8288 Link Headers for Automated AI Agent Discovery
+  # 1. Content Signals Header (https://contentsignals.org/)
+  Header set Content-Signal "ai-train=no, search=yes, ai-input=no"
+
+  # 2. RFC 8288 Link Headers for Automated AI Agent Discovery
   Header set Link "</.well-known/api-catalog>; rel=\"api-catalog\", </.well-known/ai-catalog.json>; rel=\"ai-catalog\", </.well-known/mcp/server-card.json>; rel=\"mcp-server-card\", </.well-known/agent-skills/index.json>; rel=\"agent-skills\", </llms-full.txt>; rel=\"service-doc\", </auth.md>; rel=\"author-authorization\""
   
   # 2. Universal CORS for Agent Manifests and API Discovery
