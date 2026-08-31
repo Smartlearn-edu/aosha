@@ -1,6 +1,6 @@
 /**
  * AOSHA Platform - Interactive JavaScript
- * Modular Vanilla JS for Moodle Session Detection, Light/Dark Theme Switcher, Navigation, FAQ, and Modals
+ * Modular Vanilla JS for Moodle Session Detection, i18n Language Switcher, Theme Switcher, Navigation, FAQ, and Modals
  */
 
 (function () {
@@ -12,6 +12,7 @@
     loginStatusFile: '/login_status.php',
     demoModalId: 'demo-modal',
     themeStorageKey: 'aosha_theme_mode',
+    langStorageKey: 'aosha_lang_mode',
     toastTimeout: 4000
   };
 
@@ -20,7 +21,8 @@
     moodleUser: null,
     isMenuOpen: false,
     isModalOpen: false,
-    currentTheme: 'dark'
+    currentTheme: 'dark',
+    currentLang: 'ar'
   };
 
   // DOM Elements
@@ -36,12 +38,95 @@
   const modalOverlay = document.getElementById(CONFIG.demoModalId);
   const demoForm = document.getElementById('demo-request-form');
   const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
+  const langBtns = document.querySelectorAll('.lang-btn');
 
   /**
-   * 1. Instant Light / Dark Mode Switcher (No Page Reload)
+   * 1. Bilingual Internationalization (AR / EN Switcher)
+   */
+  function initLanguage() {
+    let savedLang = 'ar';
+    try {
+      savedLang = localStorage.getItem(CONFIG.langStorageKey) || 'ar';
+    } catch (e) {
+      savedLang = 'ar';
+    }
+
+    setLanguage(savedLang, false);
+
+    langBtns.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const selected = this.getAttribute('data-lang');
+        if (selected && selected !== state.currentLang) {
+          setLanguage(selected, true);
+        }
+      });
+    });
+  }
+
+  function setLanguage(lang, savePreference) {
+    if (typeof TRANSLATIONS === 'undefined' || !TRANSLATIONS[lang]) return;
+    state.currentLang = lang;
+    const t = TRANSLATIONS[lang];
+
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    if (t.page_title) {
+      document.title = t.page_title;
+    }
+
+    // Update active class on all lang buttons
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      const bLang = btn.getAttribute('data-lang');
+      btn.classList.toggle('active', bLang === lang);
+      btn.setAttribute('aria-pressed', bLang === lang ? 'true' : 'false');
+    });
+
+    // Update plain text content
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) {
+        el.textContent = t[key];
+      }
+    });
+
+    // Update HTML content (with markup)
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+      const key = el.getAttribute('data-i18n-html');
+      if (t[key] !== undefined) {
+        el.innerHTML = t[key];
+      }
+    });
+
+    // Update input placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (t[key] !== undefined) {
+        el.setAttribute('placeholder', t[key]);
+      }
+    });
+
+    // Update titles / tooltips
+    document.querySelectorAll('[data-i18n-title]').forEach(function (el) {
+      const key = el.getAttribute('data-i18n-title');
+      if (t[key] !== undefined) {
+        el.setAttribute('title', t[key]);
+      }
+    });
+
+    if (savePreference) {
+      try {
+        localStorage.setItem(CONFIG.langStorageKey, lang);
+      } catch (e) {
+        console.warn('LocalStorage not available for language preference');
+      }
+    }
+  }
+
+  /**
+   * 2. Instant Light / Dark Mode Switcher (No Page Reload)
    */
   function initTheme() {
-    // Check saved preference or system preference
     let savedTheme = 'dark';
     try {
       savedTheme = localStorage.getItem(CONFIG.themeStorageKey) || 'dark';
@@ -64,7 +149,6 @@
     state.currentTheme = theme;
     document.documentElement.setAttribute('data-theme', theme);
 
-    // Update aria labels & titles on buttons
     themeToggleBtns.forEach(function (btn) {
       const label = theme === 'dark' ? 'التبديل إلى الوضع الفاتح' : 'التبديل إلى الوضع الداكن';
       btn.setAttribute('aria-label', label);
@@ -81,7 +165,7 @@
   }
 
   /**
-   * 2. Detect Moodle Session via login_status.php
+   * 3. Detect Moodle Session via login_status.php
    */
   function detectMoodleSession() {
     if (!window.fetch) return;
@@ -106,7 +190,7 @@
           state.moodleUser = {
             id: data.id || null,
             username: data.username || '',
-            fullname: data.fullname || data.username || 'المستخدم',
+            fullname: data.fullname || data.username || 'User',
             firstname: data.firstname || '',
             avatar: data.avatar || ''
           };
@@ -144,16 +228,14 @@
       }
     }
 
-    // Toggle Visibility
     userChip.classList.add('is-active');
     if (guestLoginBtn) {
       guestLoginBtn.style.display = 'none';
     }
 
-    // Update Mobile Login Link if present
     const mobileLoginLink = document.querySelector('.mobile-login-link');
     if (mobileLoginLink) {
-      mobileLoginLink.textContent = 'لوحة التحكم LMS (' + displayName + ')';
+      mobileLoginLink.textContent = 'LMS (' + displayName + ')';
       mobileLoginLink.href = CONFIG.moodleUrl + '/my/';
     }
   }
@@ -171,7 +253,7 @@
   }
 
   /**
-   * 3. Header Scroll Effect
+   * 4. Header Scroll Effect
    */
   function handleHeaderScroll() {
     if (!header) return;
@@ -183,7 +265,7 @@
   }
 
   /**
-   * 4. Mobile Menu Toggle
+   * 5. Mobile Menu Toggle
    */
   function setupMobileMenu() {
     if (!mobileMenuBtn || !navMenu) return;
@@ -195,7 +277,6 @@
       mobileMenuBtn.setAttribute('aria-expanded', state.isMenuOpen);
     });
 
-    // Close when clicking nav links
     const links = navMenu.querySelectorAll('a');
     links.forEach(function (link) {
       link.addEventListener('click', function () {
@@ -204,7 +285,6 @@
       });
     });
 
-    // Close when clicking outside
     document.addEventListener('click', function (e) {
       if (state.isMenuOpen && !navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
         state.isMenuOpen = false;
@@ -214,7 +294,7 @@
   }
 
   /**
-   * 5. User Dropdown Toggle
+   * 6. User Dropdown Toggle
    */
   function setupUserDropdown() {
     if (!userBtn || !userDropdown) return;
@@ -232,7 +312,7 @@
   }
 
   /**
-   * 6. FAQ Accordion
+   * 7. FAQ Accordion
    */
   function setupFAQ() {
     const faqItems = document.querySelectorAll('.faq-item');
@@ -245,7 +325,6 @@
       questionBtn.addEventListener('click', function () {
         const isActive = item.classList.contains('active');
 
-        // Close other items
         faqItems.forEach(function (otherItem) {
           if (otherItem !== item) {
             otherItem.classList.remove('active');
@@ -254,7 +333,6 @@
           }
         });
 
-        // Toggle current item
         item.classList.toggle('active', !isActive);
         questionBtn.setAttribute('aria-expanded', !isActive ? 'true' : 'false');
       });
@@ -262,12 +340,11 @@
   }
 
   /**
-   * 7. Demo Request Modal
+   * 8. Demo Request Modal
    */
   function setupModal() {
     if (!modalOverlay) return;
 
-    // Open triggers
     const openBtns = document.querySelectorAll('[data-open-modal="demo"]');
     openBtns.forEach(function (btn) {
       btn.addEventListener('click', function (e) {
@@ -276,7 +353,6 @@
       });
     });
 
-    // Close triggers
     const closeBtns = modalOverlay.querySelectorAll('[data-close-modal]');
     closeBtns.forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -284,21 +360,18 @@
       });
     });
 
-    // Backdrop click
     modalOverlay.addEventListener('click', function (e) {
       if (e.target === modalOverlay) {
         closeModal();
       }
     });
 
-    // Escape key
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && state.isModalOpen) {
         closeModal();
       }
     });
 
-    // Form Submission
     if (demoForm) {
       demoForm.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -327,7 +400,7 @@
 
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>جاري الإرسال...</span>';
+      submitBtn.innerHTML = '<span>' + (state.currentLang === 'ar' ? 'جاري الإرسال...' : 'Submitting...') + '</span>';
     }
 
     setTimeout(function () {
@@ -337,12 +410,15 @@
       }
       form.reset();
       closeModal();
-      showToast('شكراً لتواصلك مع أوشى! سيتواصل معك فريقنا لترتيب العرض التجريبي خلال 24 ساعة.');
+      const msg = typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[state.currentLang]
+        ? TRANSLATIONS[state.currentLang].toast_success
+        : 'شكراً لتواصلك مع أوشى!';
+      showToast(msg);
     }, 1200);
   }
 
   /**
-   * 8. Toast Notifications
+   * 9. Toast Notifications
    */
   function showToast(message) {
     let toast = document.getElementById('aosha-toast');
@@ -382,7 +458,7 @@
   }
 
   /**
-   * 9. Animated Counters on Scroll
+   * 10. Animated Counters on Scroll
    */
   function setupCounters() {
     const counterEls = document.querySelectorAll('.counter-val');
@@ -423,6 +499,7 @@
    * Initialize Everything on DOM Load
    */
   document.addEventListener('DOMContentLoaded', function () {
+    initLanguage();
     initTheme();
     detectMoodleSession();
     setupMobileMenu();
