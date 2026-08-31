@@ -1,0 +1,46 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://lms.aosha.sa/webservice/rest/server.php",
+      "service-desc": [
+        {
+          "href": "https://lms.aosha.sa/admin/tool/mobile/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://aosha.sa/llms-full.txt",
+          "type": "text/markdown"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://lms.aosha.sa/login_status.php",
+          "type": "application/json"
+        }
+      ]
+    },
+    {
+      "anchor": "https://aosha.sa/api",
+      "service-desc": [
+        {
+          "href": "https://aosha.sa/.well-known/ai-catalog.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://aosha.sa/auth.md",
+          "type": "text/markdown"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://aosha.sa/.well-known/mcp/server-card.json",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}

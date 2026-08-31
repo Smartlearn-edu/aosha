@@ -1,0 +1,54 @@
+# AOSHA Platform Full Knowledge Base | منصة أوشى الشاملة
+
+## Overview
+AOSHA (منصة أوشى) is an integrated B2B SaaS platform engineered specifically for corporations, industrial plants, factories, government organizations, and commercial contractors across Saudi Arabia and the GCC. The platform transitions organizations from fragmented paperwork and isolated software into a unified digital ecosystem.
+
+## The Four Specialized Operational Tracks
+
+### Track 1: Entity, Facility & Factory Classification (Six Stars) | تصنيف الشركات والمنشآت
+- **Purpose:** Continuous compliance dossier aggregation and evidence-backed operational rating.
+- **Core Capabilities:**
+  - Automated compliance profile consolidating training records, safety audits, and field inspection history.
+  - Distinct evaluation criteria customized for manufacturing plants, commercial establishments, and logistics providers.
+  - Executive readiness score highlighting criteria completion prior to formal submission.
+  - Multi-site and multi-branch benchmarking under a unified corporate umbrella.
+- **Scoring Framework:**
+  - Excellent Level (10 Points): Zero regulatory violations, full documentation, certified workforce training.
+  - Good Level (7 Points): Maximum 1 observation with prompt initiation of corrective action.
+  - Needs Improvement (5 Points): Multiple observations requiring CAPA workflow intervention.
+
+### Track 2: HSSE Management Systems | الأنظمة الإدارية
+- **Purpose:** Comprehensive governance for Occupational Safety & Health, Civil Security, and Environmental sustainability.
+- **Core Capabilities:**
+  - Occupational Safety & Health (OSH): Incident investigation, root-cause analysis, risk assessment matrices.
+  - Civil Security & Emergency: Evacuation drill scheduling, crisis response team rosters, emergency procedures.
+  - Environmental Management: Hazardous waste tracking, emissions monitoring, ESG & sustainability metrics.
+  - Controlled Document Management: Versioned SOP archives ensuring audit readiness.
+
+### Track 3: Field Inspection, Auditing & Reporting | التفتيش والتدقيق والتقارير
+- **Purpose:** Digital mobile tools for on-site rounds, observation logging, and instant executive reporting.
+- **Core Capabilities:**
+  - Mobile dynamic checklists adapted to facility risk profiles and equipment types.
+  - Geo-tagged, timestamped photo evidence attachments for transparency.
+  - Automated Corrective and Preventive Actions (CAPA) with assigned owners, due dates, and escalation paths.
+  - One-click export of executive audit summaries in PDF format.
+
+### Track 4: Training & Qualifications (LMS) | التدريب والتأهيل
+- **Purpose:** Qualification paths in Safety, Security, and Environment from enrollment to certified credentials.
+- **Core Capabilities:**
+  - Complete Trainer Management: Credentials, qualifications, performance evaluation, logs.
+  - Interactive Course Builder: Video lectures, quizzes, question banks, blended learning.
+  - Automated Digital Credentialing: Secure QR-verifiable certificates.
+  - Smart Risk-Based Scheduling: Auto-assign courses based on job title and hazard exposure.
+  - Integration: Powered by Moodle LMS infrastructure at https://lms.aosha.sa.
+
+## Legal Status & Professional Nature
+The AOSHA Saudi Arabia Excellence Classification is a private, proprietary professional standard developed by AOSHA Saudi Arabia for benchmarking and organizational excellence. It does not substitute for any mandatory government permits, statutory licenses, or regulatory requirements.
+
+## Contact Information
+- Organization: AOSHA Saudi Arabia (شركة أوشى السعودية)
+- Location: Riyadh, Kingdom of Saudi Arabia
+- Website: https://aosha.sa
+- LMS Portal: https://lms.aosha.sa
+- Email: info@aosha.sa
+- Phone & WhatsApp: +966 50 435 1155

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://agentskills.io/schemas/v0.2.0/index.json",
+  "provider": {
+    "name": "AOSHA Saudi Arabia",
+    "url": "https://aosha.sa"
+  },
+  "skills": [
+    {
+      "name": "aosha-facility-classification",
+      "type": "workflow",
+      "description": "Assess and classify enterprise facilities against the AOSHA Six Stars safety and operational risk framework.",
+      "url": "https://aosha.sa/llms-full.txt#track-1",
+      "digest": "sha256:18f371855e36b67203ceb09f407c8b4ca060a599d95a44f5dd8ec994e9e13705"
+    },
+    {
+      "name": "aosha-hsse-compliance-governance",
+      "type": "workflow",
+      "description": "Manage Occupational Safety & Health, Civil Security emergency response, and Environmental sustainability documentation.",
+      "url": "https://aosha.sa/llms-full.txt#track-2",
+      "digest": "sha256:fd1f9fa2de289326cf8ba83703d239eb608676ee761ae95b03ef3749d87ab34a"
+    },
+    {
+      "name": "aosha-inspection-capa-audit",
+      "type": "tool",
+      "description": "Conduct digital field inspections with photo evidence capture, assign CAPA corrective actions, and export executive reports.",
+      "url": "https://aosha.sa/llms-full.txt#track-3",
+      "digest": "sha256:33513c34ba4d9602d5eceadaeafeb7f2a5beaf66394d421d6c319cd8c6896ab3"
+    },
+    {
+      "name": "aosha-moodle-lms-training",
+      "type": "mcp",
+      "description": "Search, enroll, and verify credentials across accredited HSSE qualification courses powered by Moodle LMS.",
+      "url": "https://lms.aosha.sa",
+      "digest": "sha256:48de95779cb8f115ad3edd0a3acf3dc7a2e79f381e35d5695c1fa6959abef989"
+    }
+  ]
+}

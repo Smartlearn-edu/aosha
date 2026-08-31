@@ -1,0 +1,59 @@
+# ==============================================================================
+# AOSHA Platform - Agent-Ready & Security Server Configuration
+# RFC 8288 Link Headers, Content Negotiation (Markdown for Agents), and CORS
+# ==============================================================================
+
+<IfModule mod_headers.c>
+  # 1. RFC 8288 Link Headers for Automated AI Agent Discovery
+  Header set Link "</.well-known/api-catalog>; rel=\"api-catalog\", </.well-known/ai-catalog.json>; rel=\"ai-catalog\", </.well-known/mcp/server-card.json>; rel=\"mcp-server-card\", </.well-known/agent-skills/index.json>; rel=\"agent-skills\", </llms-full.txt>; rel=\"service-doc\", </auth.md>; rel=\"author-authorization\""
+  
+  # 2. Universal CORS for Agent Manifests and API Discovery
+  <FilesMatch "\.(json|txt|md)$">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization, Accept"
+  </FilesMatch>
+
+  <Files "api-catalog">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Content-Type "application/linkset+json; charset=utf-8"
+  </Files>
+
+  <Files "openid-configuration">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Content-Type "application/json; charset=utf-8"
+  </Files>
+
+  <Files "oauth-authorization-server">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Content-Type "application/json; charset=utf-8"
+  </Files>
+
+  <Files "oauth-protected-resource">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Content-Type "application/json; charset=utf-8"
+  </Files>
+</IfModule>
+
+# 3. MIME Types
+<IfModule mod_mime.c>
+  AddType text/markdown .md
+  AddType text/markdown .txt
+  AddType application/json .json
+  AddType application/linkset+json .linkset
+</IfModule>
+
+# 4. Markdown for Agents Content Negotiation
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # If client specifically requests text/markdown via HTTP Accept header
+  RewriteCond %{HTTP:Accept} text/markdown [NC]
+  RewriteCond %{REQUEST_URI} ^/(index\.html)?$
+  RewriteRule ^(.*)$ llms.txt [L]
+
+  # If query parameter ?format=markdown is passed
+  RewriteCond %{QUERY_STRING} format=markdown [NC]
+  RewriteCond %{REQUEST_URI} ^/(index\.html)?$
+  RewriteRule ^(.*)$ llms.txt [L]
+</IfModule>

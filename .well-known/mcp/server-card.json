@@ -1,0 +1,105 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-card.json",
+  "serverInfo": {
+    "name": "AOSHA Intelligence & Compliance MCP Server",
+    "version": "1.0.0",
+    "description": "Model Context Protocol (MCP) server providing AI agents with real-time access to AOSHA Six Stars facility classification, HSSE compliance governance, mobile inspection workflows, and Moodle LMS training pathways."
+  },
+  "transport": {
+    "type": "sse",
+    "endpoint": "https://lms.aosha.sa/mcp/sse"
+  },
+  "capabilities": {
+    "tools": {
+      "listChanged": true
+    },
+    "resources": {
+      "subscribe": true,
+      "listChanged": true
+    },
+    "prompts": {
+      "listChanged": true
+    }
+  },
+  "tools": [
+    {
+      "name": "get_facility_classification",
+      "description": "Retrieve the Six Stars compliance score, maturity tier (Excellent, Good, Needs Improvement), and digital evidence audit trail for a designated entity or commercial factory.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facility_cr_or_id": {
+            "type": "string",
+            "description": "Commercial registration number or internal facility identifier"
+          }
+        },
+        "required": [
+          "facility_cr_or_id"
+        ]
+      }
+    },
+    {
+      "name": "search_safety_courses",
+      "description": "Search available accredited Occupational Safety & Health (OSH), Civil Security, and Environmental qualification courses in AOSHA Moodle LMS.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Search keyword or subject area (e.g., 'Fire Safety', 'Risk Assessment', 'Hazardous Waste')"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Maximum number of results to return (default: 10)"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "name": "verify_certificate_qr",
+      "description": "Validate the authenticity of an accredited safety certificate issued by AOSHA Moodle LMS using the verifiable certificate code or QR serial.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "certificate_code": {
+            "type": "string",
+            "description": "The unique certificate serial number"
+          }
+        },
+        "required": [
+          "certificate_code"
+        ]
+      }
+    },
+    {
+      "name": "get_inspection_checklists",
+      "description": "Fetch standardized digital inspection checklist templates categorized by hazard profile (industrial, commercial, construction).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sector_type": {
+            "type": "string",
+            "enum": [
+              "factory",
+              "commercial",
+              "government",
+              "contractor",
+              "logistics"
+            ],
+            "description": "Sector category for inspection checklist"
+          }
+        },
+        "required": [
+          "sector_type"
+        ]
+      }
+    }
+  ],
+  "contact": {
+    "email": "info@aosha.sa",
+    "url": "https://aosha.sa"
+  }
+}

@@ -496,6 +496,117 @@
   }
 
   /**
+   * 11. Back to Top Button
+   */
+  function setupBackToTop() {
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (!backToTopBtn) return;
+
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    backToTopBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  /**
+   * 12. WebMCP (Web Model Context Protocol) Browser Integration
+   */
+  function initWebMCP() {
+    const modelContext = (typeof navigator !== 'undefined' && navigator.modelContext) 
+      || (typeof window !== 'undefined' && window.modelContext);
+
+    // Expose fallback agent helper on window for browser-based AI sidecars & extensions
+    window.AOSHA_AGENT_TOOLS = {
+      getOverview: function () {
+        return {
+          platform: 'AOSHA Unified Platform',
+          tracks: [
+            { id: 1, name: 'Facility Classification (Six Stars)', url: 'https://aosha.sa/#track-1' },
+            { id: 2, name: 'HSSE Management Systems', url: 'https://aosha.sa/#track-2' },
+            { id: 3, name: 'Inspection, Auditing & Reporting', url: 'https://aosha.sa/#track-3' },
+            { id: 4, name: 'Training & Qualifications (LMS)', url: 'https://aosha.sa/#track-4', lmsUrl: 'https://lms.aosha.sa' }
+          ],
+          contact: { email: 'info@aosha.sa', phone: '00966504351155', location: 'Riyadh, KSA' }
+        };
+      },
+      openDemoModal: function (track) {
+        openModal();
+        if (track) {
+          const sel = document.getElementById('interested-track');
+          if (sel) sel.value = track;
+        }
+        return { status: 'modal_opened', message: 'Demo request modal opened successfully' };
+      }
+    };
+
+    if (!modelContext || typeof modelContext.provideContext !== 'function') {
+      return;
+    }
+
+    try {
+      modelContext.provideContext({
+        name: 'AOSHA Platform Assistant',
+        description: 'Enables AI agents to query AOSHA facility classification, safety courses, inspection templates, and book enterprise demos.',
+        tools: [
+          {
+            name: 'get_aosha_overview',
+            description: 'Get an overview of AOSHA four operational tracks and portal endpoints.',
+            inputSchema: {
+              type: 'object',
+              properties: {}
+            },
+            execute: async function () {
+              return {
+                platform: 'AOSHA Platform',
+                description: 'Integrated B2B SaaS for Classification, HSSE, Inspection, and LMS Training.',
+                portalUrl: 'https://aosha.sa',
+                moodleLmsUrl: 'https://lms.aosha.sa',
+                hq: 'Riyadh, Saudi Arabia'
+              };
+            }
+          },
+          {
+            name: 'request_demo',
+            description: 'Trigger the interactive demo request form for an organization.',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                track: {
+                  type: 'string',
+                  enum: ['all', 'classification', 'hsse', 'audit', 'lms'],
+                  description: 'Target operational track'
+                }
+              }
+            },
+            execute: async function (args) {
+              openModal();
+              if (args && args.track) {
+                const sel = document.getElementById('interested-track');
+                if (sel) sel.value = args.track;
+              }
+              return { success: true, message: 'Demo modal opened for user' };
+            }
+          }
+        ]
+      });
+      console.info('[AOSHA WebMCP] Context provided successfully to browser modelContext');
+    } catch (e) {
+      console.warn('[AOSHA WebMCP] Registration notice:', e.message);
+    }
+  }
+
+  /**
    * Initialize Everything on DOM Load
    */
   document.addEventListener('DOMContentLoaded', function () {
@@ -507,6 +618,8 @@
     setupFAQ();
     setupModal();
     setupCounters();
+    setupBackToTop();
+    initWebMCP();
 
     window.addEventListener('scroll', handleHeaderScroll, { passive: true });
     handleHeaderScroll();

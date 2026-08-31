@@ -1,0 +1,25 @@
+# AOSHA Platform | منصة أوشى الشاملة
+
+> AOSHA is an enterprise digital ecosystem in Saudi Arabia integrating four operational tracks: Entity Classification (Six Stars), HSSE Management Systems (OSH, Civil Security, Environment), Field Inspection & Auditing (with photo evidence & automated CAPA), and Training & Qualifications (Moodle LMS).
+
+## Core Operational Tracks
+- [Track 1: Entity & Factory Classification (Six Stars)](https://aosha.sa/#track-1): Advanced Six-Stars performance rating framework evaluating operational risk, compliance track record, and verified digital evidence.
+- [Track 2: HSSE Management Systems](https://aosha.sa/#track-2): Centralized management for Occupational Safety & Health (OSH), Civil Security, Emergency Evacuation, and Environmental sustainability.
+- [Track 3: Inspection, Auditing & Reporting](https://aosha.sa/#track-3): Mobile digital checklists, geo-tagged photo observations, automated CAPA corrective workflows, and instant PDF executive reports.
+- [Track 4: Training & Qualifications (LMS)](https://aosha.sa/#track-4): Comprehensive LMS for trainers, learners, interactive courses, and instant QR-verified digital certificates.
+
+## Integrated Educational Portal
+- [AOSHA Moodle LMS Portal](https://lms.aosha.sa): Direct enterprise access for interactive courses, certification validation, and qualification pathways.
+
+## Evaluation & Standards
+- [Six Stars HSSE Framework](https://aosha.sa/#six-stars): Proprietary excellence framework assessing facilities into Excellent (10 pts), Good (7 pts), and Needs Improvement (5 pts) based on monthly digital audit findings.
+- [Legal Status & Disclaimer](https://aosha.sa/#faq): Private professional standard developed by AOSHA Saudi Arabia for benchmarking and organizational maturity.
+
+## Enterprise Details & Contact
+- **Company:** AOSHA Saudi Arabia (شركة أوشى السعودية)
+- **Headquarters:** Riyadh, Kingdom of Saudi Arabia
+- **Official Website:** https://aosha.sa
+- **LMS Portal:** https://lms.aosha.sa
+- **Email:** info@aosha.sa
+- **Phone / WhatsApp:** +966 50 435 1155
+- **Languages Supported:** Arabic (العربية), English

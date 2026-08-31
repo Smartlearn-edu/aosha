@@ -1,0 +1,31 @@
+# Content Signals for AI Crawlers & Large Language Models (contentsignals.org)
+Content-Signal: search=yes, ai-train=no, ai-input=yes
+
+User-agent: *
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /auth.md
+Allow: /.well-known/
+Allow: /assets/
+
+# AI Crawlers & Agent Discovery
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://aosha.sa/sitemap.xml
