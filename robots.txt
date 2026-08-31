@@ -1,7 +1,10 @@
 # ==============================================================================
-# Content Signals for AI Crawlers & Large Language Models (https://contentsignals.org/)
+# Content Signals (https://contentsignals.org/ & draft-romm-aipref-contentsignals)
 # ==============================================================================
 Content-Signal: ai-train=no, search=yes, ai-input=no
+
+# ARD Agentmap Discovery
+Agentmap: https://aosha.sa/.well-known/ai-catalog.json
 
 User-agent: *
 Content-Signal: ai-train=no, search=yes, ai-input=no

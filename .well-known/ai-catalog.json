@@ -1,49 +1,45 @@
 {
   "specVersion": "1.0",
   "host": {
-    "domain": "aosha.sa",
-    "name": "AOSHA Unified Platform",
-    "description": "Unified enterprise ecosystem in Saudi Arabia for Six Stars Facility Classification, HSSE Governance, Mobile Field Inspection, and Moodle LMS Training."
+    "displayName": "AOSHA Unified Platform",
+    "identifier": "did:web:aosha.sa"
   },
   "entries": [
     {
-      "urn": "urn:air:aosha.sa:mcp:compliance-server",
+      "identifier": "urn:air:aosha.sa:server:mcp-compliance",
       "displayName": "AOSHA Compliance & Classification MCP Server",
-      "type": "application/vnd.mcp+json",
+      "type": "application/mcp-server-card+json",
       "url": "https://aosha.sa/.well-known/mcp/server-card.json",
       "representativeQueries": [
         "How to classify a manufacturing plant under Saudi safety standards?",
         "Check Six Stars compliance criteria for industrial facilities",
-        "AOSHA Model Context Protocol tools and actions",
-        "Query enterprise safety and inspection audit trails"
+        "AOSHA Model Context Protocol tools and actions"
       ]
     },
     {
-      "urn": "urn:air:aosha.sa:lms:moodle-portal",
+      "identifier": "urn:air:aosha.sa:portal:moodle-lms",
       "displayName": "AOSHA Moodle LMS Educational Portal",
       "type": "text/html",
       "url": "https://lms.aosha.sa",
       "representativeQueries": [
         "Accredited OSH and Civil Security courses in Saudi Arabia",
         "Verify AOSHA digital safety training certificate QR code",
-        "Moodle LMS occupational safety course catalog",
-        "Trainer management and credential tracking"
+        "Moodle LMS occupational safety course catalog"
       ]
     },
     {
-      "urn": "urn:air:aosha.sa:docs:knowledge-base",
+      "identifier": "urn:air:aosha.sa:doc:knowledge-base",
       "displayName": "AOSHA Full System Architecture & Knowledge Base",
       "type": "text/markdown",
       "url": "https://aosha.sa/llms-full.txt",
       "representativeQueries": [
         "What are the four operational tracks of AOSHA platform?",
         "AOSHA Six Stars rating levels: Excellent, Good, Needs Improvement",
-        "Mobile inspection app with photo evidence and CAPA workflows",
-        "Environmental compliance and hazardous waste tracking"
+        "Mobile inspection app with photo evidence and CAPA workflows"
       ]
     },
     {
-      "urn": "urn:air:aosha.sa:auth:agent-registration",
+      "identifier": "urn:air:aosha.sa:auth:agent-registration",
       "displayName": "AOSHA Autonomous Agent Registration & Auth Protocol",
       "type": "text/markdown",
       "url": "https://aosha.sa/auth.md",

@@ -1,7 +1,7 @@
 {
-  "resource": "https://aosha.sa/api",
+  "resource": "https://aosha.sa",
   "authorization_servers": [
-    "https://lms.aosha.sa"
+    "https://aosha.sa"
   ],
   "scopes_supported": [
     "aosha:lms:read",

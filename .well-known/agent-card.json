@@ -1,0 +1,35 @@
+{
+  "$schema": "https://a2a-protocol.org/schemas/v1/agent-card.json",
+  "name": "AOSHA Enterprise Compliance & Training Agent",
+  "description": "Autonomous AI Agent interface for AOSHA Saudi Arabia, enabling automated facility classification assessments, HSSE compliance auditing, Moodle LMS course discovery, and field inspection reporting.",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "AOSHA Saudi Arabia",
+    "url": "https://aosha.sa",
+    "contact": "info@aosha.sa"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false
+  },
+  "endpoints": {
+    "mcp": "https://aosha.sa/.well-known/mcp/server-card.json",
+    "skills": "https://aosha.sa/.well-known/agent-skills/index.json",
+    "catalog": "https://aosha.sa/.well-known/ai-catalog.json",
+    "docs": "https://aosha.sa/llms-full.txt"
+  },
+  "skills": [
+    {
+      "name": "facility-classification",
+      "description": "Evaluate six-stars maturity rating for industrial and commercial facilities."
+    },
+    {
+      "name": "hsse-management",
+      "description": "Manage occupational health, safety, civil security, and environment matrices."
+    },
+    {
+      "name": "lms-training-discovery",
+      "description": "Search and verify safety courses and digital credentials on Moodle LMS."
+    }
+  ]
+}

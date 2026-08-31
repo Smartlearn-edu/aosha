@@ -36,6 +36,13 @@
     Header set Access-Control-Allow-Origin "*"
     Header set Content-Type "application/json; charset=utf-8"
   </Files>
+
+  # Disable caching on robots.txt so Content Signals update immediately
+  <Files "robots.txt">
+    Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </Files>
 </IfModule>
 
 # 3. MIME Types
