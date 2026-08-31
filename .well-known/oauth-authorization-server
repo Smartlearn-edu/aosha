@@ -34,17 +34,37 @@
     "private_key_jwt"
   ],
   "agent_auth": {
-    "register_uri": "https://aosha.sa/auth.md",
-    "registration_endpoint": "https://aosha.sa/api/agent/register",
+    "skill": "https://isitagentready.com/.well-known/agent-skills/auth-md/SKILL.md",
+    "register_uri": "https://aosha.sa/api/agent/register",
+    "identity_types_supported": [
+      "identity_assertion",
+      "anonymous"
+    ],
+    "identity_assertion": {
+      "assertion_types_supported": [
+        "urn:ietf:params:oauth:token-type:id-jag",
+        "verified_email"
+      ],
+      "credential_types_supported": [
+        "bearer_token",
+        "api_key"
+      ],
+      "claim_uri": "https://aosha.sa/api/agent/claim"
+    },
+    "anonymous": {
+      "credential_types_supported": [
+        "bearer_token",
+        "api_key"
+      ],
+      "claim_uri": "https://aosha.sa/api/agent/claim"
+    },
     "supported_identity_types": [
-      "agent",
-      "user",
-      "workload"
+      "identity_assertion",
+      "anonymous"
     ],
     "supported_credential_types": [
       "bearer_token",
-      "api_key",
-      "oauth_mtls"
+      "api_key"
     ],
     "claims_supported": [
       "agent_id",
