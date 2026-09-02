@@ -12,7 +12,7 @@
 - [AOSHA Moodle LMS Portal](https://lms.aosha.sa): Direct enterprise access for interactive courses, certification validation, and qualification pathways.
 
 ## Evaluation & Standards
-- [Six Stars HSSE Framework](https://aosha.sa/#six-stars): Proprietary excellence framework assessing facilities into Excellent (10 pts), Good (7 pts), and Needs Improvement (5 pts) based on monthly digital audit findings.
+- [AOSHA HSSE Excellence Award & Six Stars](https://aosha.sa/#six-stars): Proprietary excellence framework assessing facilities into Excellent (>950 pts), Good (>700 pts), and Needs Improvement (<500 pts) based on monthly digital audit findings.
 - [Legal Status & Disclaimer](https://aosha.sa/#faq): Private professional standard developed by AOSHA Saudi Arabia for benchmarking and organizational maturity.
 
 ## Enterprise Details & Contact
