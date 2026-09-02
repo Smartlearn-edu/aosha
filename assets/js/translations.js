@@ -252,6 +252,7 @@ const TRANSLATIONS = {
     "form_opt_audit": "المسار 3: التفتيش والتدقيق والتقارير",
     "form_opt_lms": "المسار 4: التدريب والتأهيل (LMS)",
     "form_btn_submit": "إرسال طلب العرض التجريبي",
+    "modal_direct_email_hint": "أو راسلنا مباشرة عبر البريد الإلكتروني:",
     "toast_success": "شكراً لتواصلك مع أوشى! سيتواصل معك فريقنا لترتيب العرض التجريبي خلال 24 ساعة.",
 
     // Footer
@@ -277,8 +278,8 @@ const TRANSLATIONS = {
     "brand_tagline": "Compliance & Training Ecosystem",
     "nav_home": "Home",
     "nav_why": "Why AOSHA",
-    "nav_tracks": "The 4 Tracks",
-    "nav_six_stars": "Six Stars",
+    "nav_tracks": "Four Tracks",
+    "nav_six_stars": "Establishment Classification",
     "nav_data": "Data Insights",
     "nav_faq": "FAQ",
     "nav_contact": "Contact Us",
@@ -298,7 +299,7 @@ const TRANSLATIONS = {
     "hero_title_gradient": "Classify Your Entity, Manage Compliance, Advance Competencies & Document Oversight in One Integrated Ecosystem",
     "hero_desc": "Four operational tracks in one digital platform to make better data-driven decisions. Transitioning companies, factories, and institutions from fragmented paperwork to a smart, integrated digital ecosystem.",
     "hero_cta_demo": "Book a Live Demo",
-    "hero_cta_tracks": "Explore The 4 Tracks",
+    "hero_cta_tracks": "Explore Four Tracks",
     "hero_stat_tracks_num": "4",
     "hero_stat_tracks_unit": "Tracks",
     "hero_stat_tracks_label": "Integrated Operational Ecosystems",
@@ -519,6 +520,7 @@ const TRANSLATIONS = {
     "form_opt_audit": "Track 3: Inspection, Auditing & Reporting",
     "form_opt_lms": "Track 4: Training & Qualifications (LMS)",
     "form_btn_submit": "Submit Demo Request",
+    "modal_direct_email_hint": "Or contact us directly via email:",
     "toast_success": "Thank you for reaching out to AOSHA! Our team will contact you within 24 hours to arrange your demo.",
 
     // Footer

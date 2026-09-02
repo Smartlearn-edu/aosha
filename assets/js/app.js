@@ -114,6 +114,14 @@
       }
     });
 
+    // Update aria-labels
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(function (el) {
+      const key = el.getAttribute('data-i18n-aria-label');
+      if (t[key] !== undefined) {
+        el.setAttribute('aria-label', t[key]);
+      }
+    });
+
     if (savePreference) {
       try {
         localStorage.setItem(CONFIG.langStorageKey, lang);
@@ -398,10 +406,42 @@
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn ? submitBtn.innerHTML : '';
 
+    const name = document.getElementById('client-name')?.value || '';
+    const company = document.getElementById('client-company')?.value || '';
+    const email = document.getElementById('client-email')?.value || '';
+    const phone = document.getElementById('client-phone')?.value || '';
+    const trackSel = document.getElementById('interested-track');
+    const trackText = trackSel ? trackSel.options[trackSel.selectedIndex]?.text : '';
+
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>' + (state.currentLang === 'ar' ? 'جاري الإرسال...' : 'Submitting...') + '</span>';
+      submitBtn.innerHTML = '<span>' + (state.currentLang === 'ar' ? 'جاري فتح البريد...' : 'Opening email...') + '</span>';
     }
+
+    const isAr = state.currentLang === 'ar';
+    const subject = encodeURIComponent(
+      isAr 
+        ? `طلب عرض تجريبي لمنصة أوشى - ${company || name}` 
+        : `AOSHA Platform Demo Request - ${company || name}`
+    );
+    
+    const body = encodeURIComponent(
+      isAr
+        ? `طلب عرض توضيحي لمنصة أوشى الشاملة:\n\n` +
+          `• الاسم الكريم: ${name}\n` +
+          `• اسم المنشأة / الجهة: ${company}\n` +
+          `• البريد الإلكتروني: ${email}\n` +
+          `• رقم الجوال: ${phone}\n` +
+          `• المسار المستهدف: ${trackText}\n\n` +
+          `تم الإرسال عبر الموقع الرسمي: https://aosha.sa`
+        : `AOSHA Platform Live Demo Request:\n\n` +
+          `• Full Name: ${name}\n` +
+          `• Organization / Company: ${company}\n` +
+          `• Email: ${email}\n` +
+          `• Phone / Mobile: ${phone}\n` +
+          `• Selected Track: ${trackText}\n\n` +
+          `Sent via official portal: https://aosha.sa`
+    );
 
     setTimeout(function () {
       if (submitBtn) {
@@ -410,11 +450,15 @@
       }
       form.reset();
       closeModal();
+
+      // Connect and route directly to info@aosha.sa
+      window.location.href = `mailto:info@aosha.sa?subject=${subject}&body=${body}`;
+
       const msg = typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[state.currentLang]
         ? TRANSLATIONS[state.currentLang].toast_success
-        : 'شكراً لتواصلك مع أوشى!';
+        : (isAr ? 'شكراً لتواصلك مع أوشى!' : 'Thank you for contacting AOSHA!');
       showToast(msg);
-    }, 1200);
+    }, 600);
   }
 
   /**

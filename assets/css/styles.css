@@ -278,8 +278,9 @@ ul, ol {
 }
 
 /* ==========================================================================
-   Theme Toggle Button (Light / Dark Mode Instant Switch)
+   Action Icon Buttons (Theme Toggle, Login, etc.)
    ========================================================================== */
+.nav-icon-btn,
 .theme-toggle-btn {
   background: rgba(255, 250, 209, 0.08);
   border: 1px solid var(--color-brand-border);
@@ -294,12 +295,22 @@ ul, ol {
   transition: var(--transition-normal);
   padding: 0;
   position: relative;
+  text-decoration: none;
+  flex-shrink: 0;
 }
 
 .theme-toggle-btn:hover {
   background: var(--color-brand-gold-light);
   border-color: var(--color-brand-gold);
   transform: rotate(15deg) scale(1.05);
+}
+
+.nav-icon-btn:hover {
+  background: var(--color-brand-gold-light);
+  border-color: var(--color-brand-gold);
+  transform: translateY(-2px);
+  color: var(--color-pale-yellow);
+  box-shadow: 0 4px 15px rgba(203, 163, 33, 0.25);
 }
 
 .theme-icon-sun, .theme-icon-moon {
@@ -322,10 +333,18 @@ ul, ol {
   display: none;
 }
 
-[data-theme="light"] .theme-toggle-btn {
+[data-theme="light"] .theme-toggle-btn,
+[data-theme="light"] .nav-icon-btn {
   background: rgba(51, 111, 46, 0.08);
   border-color: rgba(51, 111, 46, 0.2);
   color: #b38b15;
+}
+
+[data-theme="light"] .nav-icon-btn:hover {
+  background: rgba(51, 111, 46, 0.15);
+  border-color: var(--color-brand-primary);
+  color: #122812;
+  box-shadow: 0 4px 15px rgba(51, 111, 46, 0.2);
 }
 
 /* ==========================================================================
@@ -452,6 +471,10 @@ ul, ol {
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  width: 100%;
+  max-width: 100%;
+  padding-left: clamp(20px, 3.5vw, 48px);
+  padding-right: clamp(20px, 3.5vw, 48px);
 }
 
 .brand-logo {
@@ -474,7 +497,7 @@ ul, ol {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: clamp(12px, 1.6vw, 24px);
 }
 
 .nav-link {
@@ -483,6 +506,7 @@ ul, ol {
   color: var(--color-text-muted);
   position: relative;
   padding: 6px 0;
+  white-space: nowrap;
 }
 
 .nav-link::after {
@@ -1725,6 +1749,37 @@ html[dir="ltr"] .track-row.reverse .track-showcase-box {
   box-shadow: 0 0 0 3px rgba(203, 163, 33, 0.25);
 }
 
+.modal-direct-contact {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.modal-direct-link {
+  color: var(--color-brand-gold);
+  font-weight: 700;
+  text-decoration: underline;
+  transition: var(--transition-fast);
+}
+
+.modal-direct-link:hover {
+  color: var(--color-pale-yellow);
+}
+
+[data-theme="light"] .modal-direct-link {
+  color: var(--color-brand-primary);
+}
+
+[data-theme="light"] .modal-direct-link:hover {
+  color: #122812;
+}
+
 /* ==========================================================================
    Footer
    ========================================================================== */
@@ -2047,6 +2102,10 @@ html[dir="ltr"] .hero-stats {
 
 html[dir="ltr"] .btn-arrow-icon {
   transform: rotate(180deg);
+}
+
+html[dir="ltr"] .login-icon-btn svg {
+  transform: scaleX(-1);
 }
 
 html[dir="ltr"] .btn:hover .btn-arrow-icon {

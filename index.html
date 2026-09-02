@@ -184,7 +184,7 @@
        Header & Navigation Bar
        ====================================================================== -->
   <header class="header" id="main-header">
-    <div class="container header-container">
+    <div class="header-container">
       
       <!-- Brand Logo with AOSHA 3D Logo -->
       <a href="#hero" class="brand-logo" aria-label="منصة أوشى الرئيسية">
@@ -298,14 +298,13 @@
           </div>
         </div>
 
-        <!-- Guest Login Button (Links directly to Moodle) -->
-        <a href="https://lms.aosha.sa/login/index.php" class="btn btn-secondary" id="guest-login-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <!-- Guest Login Icon Button (Links directly to Moodle) -->
+        <a href="https://lms.aosha.sa/login/index.php" class="nav-icon-btn login-icon-btn" id="guest-login-btn" aria-label="تسجيل الدخول" title="تسجيل الدخول" data-i18n-title="btn_login" data-i18n-aria-label="btn_login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
             <polyline points="10 17 15 12 10 7"></polyline>
             <line x1="15" y1="12" x2="3" y2="12"></line>
           </svg>
-          <span data-i18n="btn_login">تسجيل الدخول</span>
         </a>
 
         <!-- Demo Booking CTA -->
@@ -1274,6 +1273,11 @@
         <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
           <span data-i18n="form_btn_submit">إرسال طلب العرض التجريبي</span>
         </button>
+
+        <div class="modal-direct-contact">
+          <span data-i18n="modal_direct_email_hint">أو راسلنا مباشرة عبر البريد الإلكتروني:</span>
+          <a href="mailto:info@aosha.sa?subject=%D8%B7%D9%84%D8%A8%20%D8%B9%D8%B1%D8%B6%20%D8%AA%D8%AC%D8%B1%D9%8A%D8%A8%D9%8A%20%D9%84%D9%85%D9%86%D8%B5%D8%A9%20%D8%A3%D9%88%D8%B4%D9%89" class="modal-direct-link">info@aosha.sa</a>
+        </div>
       </form>
     </div>
   </div>
