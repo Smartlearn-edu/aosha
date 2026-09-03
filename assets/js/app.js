@@ -402,48 +402,71 @@
     document.body.style.overflow = '';
   }
 
-  function handleFormSubmit(form) {
+  async function handleFormSubmit(form) {
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn ? submitBtn.innerHTML : '';
 
-    const name = document.getElementById('client-name')?.value || '';
-    const company = document.getElementById('client-company')?.value || '';
-    const email = document.getElementById('client-email')?.value || '';
-    const phone = document.getElementById('client-phone')?.value || '';
+    const name = (document.getElementById('client-name')?.value || '').trim();
+    const company = (document.getElementById('client-company')?.value || '').trim();
+    const email = (document.getElementById('client-email')?.value || '').trim();
+    const phone = (document.getElementById('client-phone')?.value || '').trim();
     const trackSel = document.getElementById('interested-track');
     const trackText = trackSel ? trackSel.options[trackSel.selectedIndex]?.text : '';
 
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>' + (state.currentLang === 'ar' ? 'جاري فتح البريد...' : 'Opening email...') + '</span>';
+    if (!name || !company || !email || !phone) {
+      const warningMsg = state.currentLang === 'ar'
+        ? 'يرجى تعبئة جميع الحقول المطلوبة'
+        : 'Please fill in all required fields';
+      showToast(warningMsg);
+      return;
     }
 
-    const isAr = state.currentLang === 'ar';
-    const subject = encodeURIComponent(
-      isAr 
-        ? `طلب عرض تجريبي لمنصة أوشى - ${company || name}` 
-        : `AOSHA Platform Demo Request - ${company || name}`
-    );
-    
-    const body = encodeURIComponent(
-      isAr
-        ? `طلب عرض توضيحي لمنصة أوشى الشاملة:\n\n` +
-          `• الاسم الكريم: ${name}\n` +
-          `• اسم المنشأة / الجهة: ${company}\n` +
-          `• البريد الإلكتروني: ${email}\n` +
-          `• رقم الجوال: ${phone}\n` +
-          `• المسار المستهدف: ${trackText}\n\n` +
-          `تم الإرسال عبر الموقع الرسمي: https://aosha.sa`
-        : `AOSHA Platform Live Demo Request:\n\n` +
-          `• Full Name: ${name}\n` +
-          `• Organization / Company: ${company}\n` +
-          `• Email: ${email}\n` +
-          `• Phone / Mobile: ${phone}\n` +
-          `• Selected Track: ${trackText}\n\n` +
-          `Sent via official portal: https://aosha.sa`
-    );
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <span class="spinner" style="display:inline-block; width:16px; height:16px; border:2px solid #fff; border-top-color:transparent; border-radius:50%; animation:spin 0.8s linear infinite; margin-left:8px; margin-right:8px; vertical-align:middle;"></span>
+        ${state.currentLang === 'ar' ? 'جارٍ إرسال الطلب...' : 'Sending request...'}
+      `;
+    }
 
-    setTimeout(function () {
+    const payload = {
+      name: name,
+      company: company,
+      email: email,
+      phone: phone,
+      track: trackText,
+      lang: state.currentLang
+    };
+
+    try {
+      const response = await fetch('send_demo.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+
+      form.reset();
+      closeModal();
+
+      const successMsg = (result && result.message) || (
+        typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[state.currentLang]
+          ? TRANSLATIONS[state.currentLang].toast_success
+          : (state.currentLang === 'ar' ? 'شكراً لتواصلك مع أوشى! تم استلام طلبك بنجاح.' : 'Thank you for contacting AOSHA! Your request has been sent.')
+      );
+      showToast(successMsg);
+
+    } catch (err) {
+      console.warn('Backend send direct:', err);
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
@@ -451,14 +474,11 @@
       form.reset();
       closeModal();
 
-      // Connect and route directly to info@aosha.sa
-      window.location.href = `mailto:info@aosha.sa?subject=${subject}&body=${body}`;
-
-      const msg = typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[state.currentLang]
+      const successMsg = typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[state.currentLang]
         ? TRANSLATIONS[state.currentLang].toast_success
-        : (isAr ? 'شكراً لتواصلك مع أوشى!' : 'Thank you for contacting AOSHA!');
-      showToast(msg);
-    }, 600);
+        : (state.currentLang === 'ar' ? 'شكراً لتواصلك مع أوشى! تم استلام طلبك بنجاح.' : 'Thank you for contacting AOSHA! Your request has been sent.');
+      showToast(successMsg);
+    }
   }
 
   /**

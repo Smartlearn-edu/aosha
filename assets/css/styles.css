@@ -259,6 +259,11 @@ ul, ol {
   margin-bottom: 18px;
 }
 
+.section-title span:empty,
+.section-title span:empty + br {
+  display: none;
+}
+
 .section-title span.highlight {
   background: linear-gradient(135deg, #fffad1 0%, #cba321 60%, #4ade80 100%);
   -webkit-background-clip: text;
