@@ -200,43 +200,54 @@
         <a href="#data-insights" class="nav-link" data-i18n="nav_data">قوة البيانات</a>
         <a href="#faq" class="nav-link" data-i18n="nav_faq">الأسئلة الشائعة</a>
         <a href="#contact" class="nav-link" data-i18n="nav_contact">تواصل معنا</a>
+        <a href="https://lms.aosha.sa" class="nav-link nav-link-lms" target="_blank" rel="noopener" data-i18n="nav_lms">المنصة التعلمية</a>
       </nav>
 
       <!-- Header Actions: Flags, Theme Switcher & Moodle Dynamic Auth State -->
       <div class="header-actions">
         
-        <!-- Bilingual Flag Switcher (Saudi Arabia 🇸🇦 & USA 🇺🇸) -->
-        <div class="lang-switch-widget" role="group" aria-label="اختيار اللغة / Language Selection">
-          <!-- Saudi Arabia Flag Button (AR) -->
-          <button type="button" class="lang-btn active" data-lang="ar" aria-pressed="true" aria-label="اللغة العربية" title="اللغة العربية">
-            <svg class="flag-icon" viewBox="0 0 640 480" width="20" height="14" aria-hidden="true">
-              <rect width="640" height="480" fill="#006C35" rx="4"/>
-              <!-- Simplified Shahada & Sword representation -->
-              <path d="M140 290h360v16H140z" fill="#ffffff" opacity="0.95"/>
-              <path d="M220 250c25-15 50-15 75 0 25 15 50 15 75 0 25-15 50-15 75 0v-16c-25 15-50 15-75 0-25-15-50-15-75 0-25 15-50 15-75 0z" fill="#ffffff" opacity="0.95"/>
+        <!-- Space-Saving Bilingual Flag Dropdown (Flag only, No text) -->
+        <div class="lang-dropdown-widget" id="lang-dropdown-widget">
+          <button type="button" class="lang-dropdown-btn" id="lang-dropdown-btn" aria-haspopup="true" aria-expanded="false" aria-label="اختيار اللغة / Language" title="اختيار اللغة / Language">
+            <span class="lang-current-flag" id="lang-current-flag">
+              <svg class="flag-icon" viewBox="0 0 640 480" width="20" height="14" aria-hidden="true">
+                <rect width="640" height="480" fill="#006C35" rx="4"/>
+                <path d="M140 290h360v16H140z" fill="#ffffff" opacity="0.95"/>
+                <path d="M220 250c25-15 50-15 75 0 25 15 50 15 75 0 25-15 50-15 75 0v-16c-25 15-50 15-75 0-25-15-50-15-75 0-25 15-50 15-75 0z" fill="#ffffff" opacity="0.95"/>
+              </svg>
+            </span>
+            <svg class="lang-dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
-            <span class="lang-code">عربي</span>
           </button>
 
-          <!-- USA Flag Button (EN) -->
-          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English Language" title="English Language">
-            <svg class="flag-icon" viewBox="0 0 640 480" width="20" height="14" aria-hidden="true">
-              <rect width="640" height="480" fill="#B22234" rx="4"/>
-              <path d="M0 37h640v37H0zm0 74h640v37H0zm0 74h640v37H0zm0 74h640v37H0zm0 74h640v37H0zm0 74h640v37H0z" fill="#ffffff"/>
-              <rect width="256" height="258" fill="#3C3B6E" rx="4"/>
-              <circle cx="50" cy="50" r="12" fill="#ffffff"/>
-              <circle cx="128" cy="50" r="12" fill="#ffffff"/>
-              <circle cx="206" cy="50" r="12" fill="#ffffff"/>
-              <circle cx="89" cy="100" r="12" fill="#ffffff"/>
-              <circle cx="167" cy="100" r="12" fill="#ffffff"/>
-              <circle cx="50" cy="150" r="12" fill="#ffffff"/>
-              <circle cx="128" cy="150" r="12" fill="#ffffff"/>
-              <circle cx="206" cy="150" r="12" fill="#ffffff"/>
-              <circle cx="89" cy="200" r="12" fill="#ffffff"/>
-              <circle cx="167" cy="200" r="12" fill="#ffffff"/>
-            </svg>
-            <span class="lang-code">EN</span>
-          </button>
+          <!-- Dropdown Menu (Flags Only) -->
+          <div class="lang-dropdown-menu" id="lang-dropdown-menu" role="menu" aria-label="اختيار اللغة">
+            <button type="button" class="lang-option-btn active" data-lang="ar" role="menuitem" aria-label="اللغة العربية" title="اللغة العربية">
+              <svg class="flag-icon" viewBox="0 0 640 480" width="22" height="15" aria-hidden="true">
+                <rect width="640" height="480" fill="#006C35" rx="4"/>
+                <path d="M140 290h360v16H140z" fill="#ffffff" opacity="0.95"/>
+                <path d="M220 250c25-15 50-15 75 0 25 15 50 15 75 0 25-15 50-15 75 0v-16c-25 15-50 15-75 0-25-15-50-15-75 0-25 15-50 15-75 0z" fill="#ffffff" opacity="0.95"/>
+              </svg>
+            </button>
+            <button type="button" class="lang-option-btn" data-lang="en" role="menuitem" aria-label="English" title="English">
+              <svg class="flag-icon" viewBox="0 0 640 480" width="22" height="15" aria-hidden="true">
+                <rect width="640" height="480" fill="#B22234" rx="4"/>
+                <path d="M0 37h640v37H0zm0 74h640v37H0zm0 74h640v37H0zm0 74h640v37H0zm0 74h640v37H0zm0 74h640v37H0z" fill="#ffffff"/>
+                <rect width="256" height="258" fill="#3C3B6E" rx="4"/>
+                <circle cx="50" cy="50" r="12" fill="#ffffff"/>
+                <circle cx="128" cy="50" r="12" fill="#ffffff"/>
+                <circle cx="206" cy="50" r="12" fill="#ffffff"/>
+                <circle cx="89" cy="100" r="12" fill="#ffffff"/>
+                <circle cx="167" cy="100" r="12" fill="#ffffff"/>
+                <circle cx="50" cy="150" r="12" fill="#ffffff"/>
+                <circle cx="128" cy="150" r="12" fill="#ffffff"/>
+                <circle cx="206" cy="150" r="12" fill="#ffffff"/>
+                <circle cx="89" cy="200" r="12" fill="#ffffff"/>
+                <circle cx="167" cy="200" r="12" fill="#ffffff"/>
+              </svg>
+            </button>
+          </div>
         </div>
 
         <!-- Instant Light / Dark Mode Toggle Button -->
@@ -298,8 +309,8 @@
           </div>
         </div>
 
-        <!-- Guest Login Icon Button (Links directly to Moodle) -->
-        <a href="https://lms.aosha.sa/login/index.php" class="nav-icon-btn login-icon-btn" id="guest-login-btn" aria-label="تسجيل الدخول" title="تسجيل الدخول" data-i18n-title="btn_login" data-i18n-aria-label="btn_login">
+        <!-- Guest Login Icon Button (Links directly to Moodle LMS) -->
+        <a href="https://lms.aosha.sa/login/index.php" class="nav-icon-btn login-icon-btn" id="guest-login-btn" aria-label="تسجيل الدخول إلى LMS" title="تسجيل الدخول إلى LMS" data-i18n-title="btn_login" data-i18n-aria-label="btn_login">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
             <polyline points="10 17 15 12 10 7"></polyline>

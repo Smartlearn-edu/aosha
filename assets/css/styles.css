@@ -1999,54 +1999,152 @@ html[dir="ltr"] .track-row.reverse .track-showcase-box {
 }
 
 /* ==========================================================================
-   Language Switcher Widget (Saudi Arabia 🇸🇦 & USA 🇺🇸 Flag Buttons)
+   Language Dropdown Widget (Saudi Arabia 🇸🇦 & USA 🇺🇸 Flag Only, Space-Saving)
    ========================================================================== */
-.lang-switch-widget {
+.lang-dropdown-widget {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 3px 4px;
-  background: rgba(255, 250, 209, 0.06);
+}
+
+.lang-dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 4px 8px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 250, 209, 0.08);
   border: 1px solid var(--color-brand-border);
-  border-radius: var(--radius-full);
-  transition: var(--transition-normal);
-}
-
-[data-theme="light"] .lang-switch-widget {
-  background: rgba(51, 111, 46, 0.06);
-  border-color: rgba(51, 111, 46, 0.18);
-}
-
-.lang-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 10px;
-  border-radius: var(--radius-full);
-  background: transparent;
-  border: 1px solid transparent;
-  color: var(--color-text-muted);
-  font-size: 0.8rem;
-  font-weight: 700;
+  color: var(--color-brand-gold);
   cursor: pointer;
   transition: var(--transition-fast);
 }
 
-.lang-btn:hover {
-  color: var(--color-pale-yellow);
-  background: rgba(255, 250, 209, 0.08);
-}
-
-[data-theme="light"] .lang-btn:hover {
-  color: #122812;
-  background: rgba(51, 111, 46, 0.08);
-}
-
-.lang-btn.active {
-  background: var(--color-brand-primary);
+.lang-dropdown-btn:hover {
+  background: rgba(255, 250, 209, 0.16);
   border-color: var(--color-brand-gold);
-  color: #fffad1;
-  box-shadow: 0 2px 10px rgba(51, 111, 46, 0.4);
+  transform: translateY(-1px);
+}
+
+[data-theme="light"] .lang-dropdown-btn {
+  background: rgba(51, 111, 46, 0.06);
+  border-color: rgba(51, 111, 46, 0.2);
+  color: var(--color-brand-primary);
+}
+
+[data-theme="light"] .lang-dropdown-btn:hover {
+  background: rgba(51, 111, 46, 0.12);
+  border-color: var(--color-brand-primary);
+}
+
+.lang-current-flag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.lang-current-flag .flag-icon {
+  width: 20px;
+  height: 14px;
+  border-radius: 2.5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  display: block;
+}
+
+.lang-dropdown-arrow {
+  transition: transform 0.25s ease;
+  color: var(--color-brand-gold);
+  flex-shrink: 0;
+}
+
+[data-theme="light"] .lang-dropdown-arrow {
+  color: var(--color-brand-primary);
+}
+
+.lang-dropdown-widget.is-open .lang-dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Floating Flag Dropdown Menu */
+.lang-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  min-width: 44px;
+  background: rgba(7, 16, 8, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(203, 163, 33, 0.3);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 1100;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+[data-theme="light"] .lang-dropdown-menu {
+  background: rgba(250, 248, 240, 0.98);
+  border-color: rgba(51, 111, 46, 0.22);
+  box-shadow: 0 12px 28px rgba(24, 51, 23, 0.15);
+}
+
+.lang-dropdown-widget.is-open .lang-dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.lang-option-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.lang-option-btn:hover {
+  background: rgba(203, 163, 33, 0.16);
+  border-color: rgba(203, 163, 33, 0.35);
+  transform: scale(1.05);
+}
+
+[data-theme="light"] .lang-option-btn:hover {
+  background: rgba(51, 111, 46, 0.1);
+  border-color: rgba(51, 111, 46, 0.25);
+}
+
+.lang-option-btn.active {
+  background: rgba(51, 111, 46, 0.35);
+  border-color: var(--color-brand-gold);
+  box-shadow: 0 0 8px rgba(203, 163, 33, 0.25);
+}
+
+[data-theme="light"] .lang-option-btn.active {
+  background: rgba(51, 111, 46, 0.16);
+  border-color: var(--color-brand-primary);
+}
+
+.lang-option-btn .flag-icon {
+  width: 22px;
+  height: 15px;
+  border-radius: 2.5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  display: block;
 }
 
 .flag-icon {
@@ -2058,10 +2156,33 @@ html[dir="ltr"] .track-row.reverse .track-showcase-box {
   display: block;
 }
 
-.lang-code {
-  font-family: var(--font-heading);
-  letter-spacing: 0.3px;
-  line-height: 1;
+/* Nav Link LMS Accent */
+.nav-link-lms {
+  color: var(--color-brand-gold) !important;
+  font-weight: 700;
+}
+
+.nav-link-lms:hover {
+  color: var(--color-pale-yellow) !important;
+  text-shadow: 0 0 12px rgba(203, 163, 33, 0.4);
+}
+
+[data-theme="light"] .nav-link-lms {
+  color: var(--color-brand-primary) !important;
+}
+
+[data-theme="light"] .nav-link-lms:hover {
+  color: #122812 !important;
+}
+
+/* Legacy fallback */
+.lang-switch-widget {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.lang-btn {
+  cursor: pointer;
 }
 
 /* ==========================================================================
